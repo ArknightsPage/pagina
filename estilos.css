@@ -263,8 +263,8 @@ button:hover { background: white; color: black; }
     position: absolute; top: 25px; left: 25px;
     display: flex; gap: 10px; align-items: center; z-index: 5;
 }
-.modal-class-container img { width: 45px; filter: invert(1); }
-#modal-class-text { font-family: var(--font-mono); font-size: 20px; font-weight: bold; color: rgba(255,255,255,0.3); }
+.modal-class-container img { width: 45px }
+#modal-class-text { font-family: var(--font-mono); font-size: 20px; font-weight: bold }
 
 /* Lado Derecho: Datos */
 .modal-right {
