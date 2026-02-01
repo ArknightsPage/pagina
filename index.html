@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rhodes Island | Neural Network Access</title>
+    <style>
+        @import url('estilos.css');
+    </style>
+</head>
+
+<body>
+    <section id="login-screen">
+        <div class="ui-corner top-left"></div>
+        <div class="ui-corner top-right"></div>
+        <div class="ui-corner bottom-left"></div>
+        <div class="ui-corner bottom-right"></div>
+        <div class="login-card">
+            <img src="Rhodes_Island.png" class="main-logo" alt="Rhodes Island">
+            <div class="login-text-content">
+                <h2 class="glitch-text">PRTS ACCESS</h2>
+                <div class="loading-container">
+                    <div class="progress-bar"><div class="progress-fill"></div></div>
+                </div>
+                <button id="loginBtn">CONECTAR TERMINAL</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="main-menu" style="display: none; opacity: 0; transition: opacity 0.5s;">
+        <div class="nav-arrow-fixed" id="btn-back-login">
+            <span>◄</span> SYSTEM_LOGOUT
+        </div>
+        <div class="menu-container">
+            <div class="menu-card disabled">
+                <div class="menu-img-placeholder"><img src="Rhodes_Island.png"></div>
+                <div class="menu-text">HISTORIA</div>
+            </div>
+            <div class="menu-card disabled">
+                <div class="menu-img-placeholder"><img src="Rhodes_Island.png"></div>
+                <div class="menu-text">FACCIONES</div>
+            </div>
+            <div id="btn-personajes" class="menu-card">
+                <div class="menu-img-placeholder"><img src="eryndra.jpg"></div>
+                <div class="menu-text">PERSONAJES</div>
+            </div>
+        </div>
+    </section>
+
+<section id="operator-screen" style="display: none; opacity: 0;">
+    <div class="header-system">
+        <div class="nav-arrow" id="btn-back-menu">
+            <span>◄</span> BACK_TO_MENU
+        </div>
+        <div class="header-title">
+            <span>DATABASE: RHODES_ISLAND // OPS_DEPT</span>
+        </div>
+    </div>
+
+    <div class="scroll-container">
+        <button class="scroll-btn left" id="scrollLeftBtn">‹</button>
+        
+        <div class="operator-grid" id="opGrid"></div>
+        
+        <button class="scroll-btn right" id="scrollRightBtn">›</button>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+<div id="char-modal" class="modal-overlay">
+    <img src="Rhodes_Island.png" class="modal-bg-logo" alt="">
+    
+    <div class="modal-content">
+        <button class="close-modal" id="closeModalBtn">×</button>
+        
+        <div class="modal-left">
+            <img id="modal-img" src="" alt="" class="modal-art">
+            <div class="modal-class-container">
+                <img id="modal-class-icon" src="" alt="">
+                <span id="modal-class-text">CLASS</span>
+            </div>
+            <img id="modal-faction-logo" src="" class="faction-watermark" alt="Faction">
+        </div>
+
+        <div class="modal-right">
+            <div class="file-header">
+                <h1 id="modal-name">OPERATOR</h1>
+                <div class="modal-stars" id="modal-rarity">★★★★★★</div>
+            </div>
+
+            <div class="file-body">
+                <div class="data-row">
+                    <span class="label">CODE NAME</span>
+                    <span class="value" id="modal-codename">CodeName</span>
+                </div>
+                <div class="data-row">
+                    <span class="label">GENDER</span>
+                    <span class="value" id="modal-gender">Unknown</span> 
+                </div>
+                <div class="data-row">
+                    <span class="label">COMBAT EXP</span>
+                    <span class="value" id="modal-exp">Unknown</span>
+                </div>
+                <div class="data-row">
+                    <span class="label">BIRTHPLACE</span>
+                    <span class="value" id="modal-birthplace">Unknown</span>
+                </div>
+                
+                <div class="separator-line"></div>
+
+                <div class="data-bio">
+                    <p class="bio-text">
+                        // PHYSICAL EXAM<br>
+                        Physical Strength: <span id="phy-str">Standard</span><br>
+                        Mobility: <span id="phy-mob">Standard</span><br>
+                        Physiological Endurance: <span id="phy-end">Standard</span><br>
+                        Tactical Acumen: <span id="phy-tac">Standard</span><br>
+                        Combat Skill: <span id="phy-skill">Standard</span>
+                    </p>
+                    <p class="flavor-text" id="modal-flavor">
+                        "Retrieving personnel file..."
+                    </p>
+                </div>
+            </div>
+            
+            <div class="modal-footer" style="margin-top: auto; font-size: 10px; color: #333; text-align: right;">
+                RHODES ISLAND // PERSONNEL FILE
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<script>
+// 1. DATOS DE OPERADORES 
+const operators = [
+        // --- EJEMPLO 1: ERYNDRA (Completo) ---
+        { 
+            name: 'ERYNDRA', 
+            rarity: 6, 
+            class: 'Guard', 
+            img: 'eryndra.jpg',
+            faction: 'Rhodes_Island.png',
+            // AQUÍ ESTÁN LOS DATOS NUEVOS PERSONALIZABLES:
+            gender: 'Female',
+            combatExp: '10 Years',
+            birthplace: 'Kazdel',
+            // Estadísticas físicas
+            stats: {
+                strength: 'Excellent',
+                mobility: 'Outstanding',
+                endurance: 'Standard',
+                tactics: 'Standard',
+                skill: 'Excellent'
+            },
+            // La frase de abajo
+            flavorText: "\"Eryndra reporting in. Are you the Doctor? Don't disappoint me.\""
+        },
+
+        // --- EJEMPLO 2: AMIYA ---
+        { 
+            name: 'AMIYA', 
+            rarity: 5, 
+            class: 'Caster', 
+            img: 'Amiya.png',
+            faction: 'Rhodes_Island.png',
+            gender: 'Female',
+            combatExp: '3 Years',
+            birthplace: 'Rim Billiton',
+            stats: {
+                strength: 'Normal',
+                mobility: 'Standard',
+                endurance: 'Normal',
+                tactics: 'Excellent',
+                skill: 'Standard'
+            },
+            flavorText: "\"I will monitor your vitals, Doctor. Please don't push yourself.\""
+        },
+           //para que no ocupe tanto ponlo en una sola linea asi te ahorra espacio 
+        // --- EJEMPLO 3: SILVERASH ---
+        { name: 'SILVERASH', rarity: 6, class: 'Guard', img: 'Silverash.png',faction: 'Rhodes_Island.png', gender: 'Male',combatExp: 'Unknown',birthplace: 'Kjerag', stats: { strength: 'Excellent', mobility: 'Standard', endurance: 'Excellent', tactics: 'Outstanding', skill: 'Outstanding' }, flavorText: "\"Whatever the cost, Kjerag will survive.\""
+    },
+
+        // ... PUEDES SEGUIR AÑADIENDO PERSONAJES CON ESTE FORMATO ...
+        // Si no pones datos, saldrá "Unknown" por defecto.
+        //En este ejemplo es si no rellenas los campos se establecen todos por defecto a "Unknown"
+        { name: 'TEXAS', rarity: 5, class: 'Vanguard', img: 'Texas.png' } 
+    ];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    const classIcons = {
+        'Caster': 'Caster.png',
+        'Vanguard': 'Vanguard.png',
+        'Guard': 'Guard.png',
+        'Sniper': 'Sniper.png',
+        'Medic': 'Medic.png',
+        'Specialist': 'Specialist.png',
+        'Supporter': 'Supporter.png'
+    };
+
+    // 2. CONFIGURACIÓN VISUAL (
+    const screenConfig = {
+        'login-screen': 'flex',    // El Login necesita FLEX para centrarse
+        'main-menu': 'flex',       // El Menú necesita FLEX para las tarjetas
+        'operator-screen': 'block' // Los Personajes necesitan BLOCK
+    };
+
+    // Inicializamos el historial
+    window.history.replaceState({ screenId: 'login-screen' }, "", "#login");
+
+    // 3. FUNCIÓN DE NAVEGACIÓN ROBUSTA
+    function navegarA(seccionDestinoId, guardarEnHistorial = true) {
+        // Identificamos la pantalla que está visible actualmente
+        const pantallaActual = document.querySelector('section[style*="display: block"], section[style*="display: flex"]') || document.getElementById('login-screen');
+        const pantallaDestino = document.getElementById(seccionDestinoId);
+
+        // Si ya estamos ahí, no hacemos nada
+        if (pantallaActual.id === seccionDestinoId) return;
+
+        // Animación de salida
+        pantallaActual.style.opacity = '0';
+        
+        setTimeout(() => {
+            pantallaActual.style.display = 'none';
+            
+            // APLICAMOS EL TIPO DE DISPLAY CORRECTO SEGÚN LA CONFIGURACIÓN
+            pantallaDestino.style.display = screenConfig[seccionDestinoId] || 'block';
+            
+            setTimeout(() => {
+                pantallaDestino.style.opacity = '1';
+            }, 50);
+        }, 300);
+
+        // Guardar en historial si es navegación nueva
+        if (guardarEnHistorial) {
+            window.history.pushState({ screenId: seccionDestinoId }, "", "#" + seccionDestinoId.replace('-screen', ''));
+        }
+    }
+
+    // 4. EVENTO PARA LAS FLECHAS DEL NAVEGADOR
+    window.addEventListener('popstate', (event) => {
+        if (event.state && event.state.screenId) {
+            // Si volvemos a personajes, nos aseguramos de que carguen
+            if (event.state.screenId === 'operator-screen') loadOperators();
+            
+            // Navegamos sin guardar en historial (false) porque ya estamos viajando en él
+            navegarA(event.state.screenId, false);
+        } else {
+            // Si el historial está vacío, volvemos al login por seguridad
+            navegarA('login-screen', false);
+        }
+    });
+
+// --- FUNCIÓN loadOperators ACTUALIZADA ---
+function loadOperators() {
+    const grid = document.getElementById('opGrid');
+    if (grid.innerHTML !== "") return;
+
+    operators.forEach((op, index) => {
+        const card = document.createElement('div');
+        card.className = 'op-card';
+        const stars = '★'.repeat(op.rarity);
+        const classImg = classIcons[op.class] || '';
+
+        // 1. NUEVA LÍNEA: Definimos la imagen de la facción (usa Rhodes Island si no tiene una específica)
+        const factionImg = op.faction || 'Rhodes_Island.png'; 
+
+        card.onclick = () => openCharacterModal(op);
+
+        card.innerHTML = `
+            <div class="op-img-container">
+                <img src="${classImg}" class="op-class-icon" alt="Class">
+                
+                <img src="${factionImg}" class="op-faction-icon" alt="Faction">
+
+                <img src="${op.img}" class="op-portrait" alt="${op.name}">
+                <div class="op-rarity">${stars}</div>
+            </div>
+            <div class="op-info">
+                <div class="op-name">${op.name}</div>
+                <div class="op-status">// ACCESS_FILE ></div>
+            </div>
+        `;
+        grid.appendChild(card);
+        setTimeout(() => card.classList.add('loaded'), 100 * index);
+    });
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // --- LÓGICA DEL MODAL ---
+    const modal = document.getElementById('char-modal');
+
+function openCharacterModal(op) {
+        // 1. Datos Básicos
+        document.getElementById('modal-img').src = op.img;
+        document.getElementById('modal-name').innerText = op.name;
+        document.getElementById('modal-codename').innerText = op.name;
+        document.getElementById('modal-rarity').innerText = '★'.repeat(op.rarity);
+        
+        document.getElementById('modal-class-icon').src = classIcons[op.class] || '';
+        document.getElementById('modal-class-text').innerText = op.class ? op.class.toUpperCase() : 'UNKNOWN';
+
+        // 2. Datos Específicos (Con protección por si no existen)
+        document.getElementById('modal-gender').innerText = op.gender || 'Unknown';
+        document.getElementById('modal-exp').innerText = op.combatExp || 'Unknown';
+        document.getElementById('modal-birthplace').innerText = op.birthplace || 'Unknown';
+
+        // NUEVO: Cargar el logo de la facción
+        // Si el personaje no tiene facción definida, usa Rhodes_Island.png por defecto
+        document.getElementById('modal-faction-logo').src = op.faction || 'Rhodes_Island.png';
+
+        // 3. Estadísticas Físicas (Si el personaje tiene stats, las usamos, si no, ponemos 'Standard')
+        const stats = op.stats || {}; // Objeto vacío si no hay stats
+        document.getElementById('phy-str').innerText = stats.strength || 'Standard';
+        document.getElementById('phy-mob').innerText = stats.mobility || 'Standard';
+        document.getElementById('phy-end').innerText = stats.endurance || 'Standard';
+        document.getElementById('phy-tac').innerText = stats.tactics || 'Standard';
+        document.getElementById('phy-skill').innerText = stats.skill || 'Standard';
+
+        // 4. Texto de ambientación
+        document.getElementById('modal-flavor').innerText = op.flavorText || `"Accessing personnel file for ${op.name}... Data encrypted."`;
+
+        // 5. Mostrar el modal
+        modal.classList.add('active');
+    }
+
+    // Cerrar con botón X
+    document.getElementById('closeModalBtn').addEventListener('click', () => {
+        modal.classList.remove('active');
+    });
+
+    // Cerrar pulsando fuera o ESC
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) modal.classList.remove('active');
+    });
+    // 6. EVENTOS DE BOTONES
+    document.getElementById('loginBtn').addEventListener('click', () => {
+        navegarA('main-menu');
+    });
+
+    document.getElementById('btn-personajes').addEventListener('click', () => {
+        loadOperators();
+        navegarA('operator-screen');
+    });
+
+    // Botón de "Atrás" de la propia web (ahora usa el historial real)
+    document.getElementById('btn-back-menu').addEventListener('click', () => {
+        window.history.back(); 
+    });
+
+// Lógica para las flechas de desplazamiento lateral
+const container = document.getElementById('opGrid');
+    
+    document.getElementById('scrollRightBtn').addEventListener('click', () => {
+        container.scrollBy({ left: 300, behavior: 'smooth' }); // Mueve 300px a la derecha
+    });
+
+    document.getElementById('scrollLeftBtn').addEventListener('click', () => {
+        container.scrollBy({ left: -300, behavior: 'smooth' }); // Mueve 300px a la izquierda
+    });
+
+    // Opcional: Permitir scroll con la rueda del ratón (horizontalmente)
+    container.addEventListener('wheel', (evt) => {
+        evt.preventDefault();
+        container.scrollLeft += evt.deltaY;
+    });
+
+    document.getElementById('btn-back-login').addEventListener('click', () => {
+        // Opción A: Usar el historial del navegador (recomendado)
+        window.history.back(); 
+        
+        // Opción B: Si prefieres forzar la navegación manual:
+        // navegarA('login-screen');
+    });
+
+
+</script>
+</body>
+</html>

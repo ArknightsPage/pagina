@@ -1,0 +1,389 @@
+/* =========================================
+   ESTILOS GENERALES (BASE)
+   ========================================= */
+:root {
+    --ri-cyan: #23c0d2;
+    --ri-gold: #ffcf40;
+    --ri-bg: #0a0a0a;
+    --ri-card: #151515;
+    --font-mono: 'Courier New', Courier, monospace;
+}
+
+body {
+    margin: 0;
+    background-color: var(--ri-bg);
+    color: white;
+    font-family: 'Segoe UI', sans-serif;
+    overflow-x: hidden;
+}
+
+/* =========================================
+   1. PANTALLA LOGIN
+   ========================================= */
+#login-screen {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background: radial-gradient(circle, #1a1a1a 0%, #000 100%);
+    overflow: hidden;
+}
+
+.login-card {
+    background: rgba(20, 20, 20, 0.9);
+    padding: 40px;
+    border-top: 2px solid var(--ri-cyan);
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    box-shadow: 0 0 30px rgba(35, 192, 210, 0.2);
+    backdrop-filter: blur(5px);
+}
+
+.main-logo {
+    width: 140px;
+    filter: drop-shadow(0 0 10px var(--ri-cyan));
+    animation: pulseLogo 4s infinite ease-in-out;
+}
+
+.login-text-content { text-align: left; }
+.glitch-text { margin: 0 0 10px 0; letter-spacing: 5px; }
+
+/* Barra de carga */
+.progress-bar {
+    width: 250px;
+    height: 4px;
+    background: #333;
+    margin: 20px 0;
+    position: relative;
+}
+.progress-fill {
+    height: 100%;
+    background: var(--ri-cyan);
+    width: 0%;
+    animation: loadBar 2s forwards;
+}
+
+/* Botón Login */
+button {
+    padding: 12px 30px;
+    background: var(--ri-cyan);
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
+    transition: 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+button:hover { background: white; color: black; }
+
+/* Esquinas Decorativas */
+.ui-corner {
+    position: absolute; width: 30px; height: 30px;
+    border: 2px solid var(--ri-cyan); opacity: 0.5;
+}
+.top-left { top: 20px; left: 20px; border-right: none; border-bottom: none; }
+.top-right { top: 20px; right: 20px; border-left: none; border-bottom: none; }
+.bottom-left { bottom: 20px; left: 20px; border-right: none; border-top: none; }
+.bottom-right { bottom: 20px; right: 20px; border-left: none; border-top: none; }
+
+
+/* =========================================
+   2. MENÚ PRINCIPAL
+   ========================================= */
+#main-menu {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--ri-bg);
+}
+
+.menu-container { display: flex; gap: 20px; }
+
+.menu-card {
+    width: 220px;
+    background: var(--ri-card);
+    border: 1px solid #333;
+    cursor: pointer;
+    transition: 0.3s;
+    position: relative;
+}
+.menu-card:hover:not(.disabled) {
+    border-color: var(--ri-cyan);
+    transform: translateY(-10px);
+}
+.menu-card.disabled { opacity: 0.4; pointer-events: none; filter: grayscale(1); }
+
+.menu-img-placeholder { height: 300px; overflow: hidden; background: #000; }
+.menu-img-placeholder img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+.menu-card:hover img { transform: scale(1.1); }
+
+.menu-text {
+    padding: 15px; text-align: center;
+    font-family: var(--font-mono); font-weight: bold;
+    background: #151515; border-top: 2px solid #333;
+}
+
+
+/* =========================================
+   3. PANTALLA DE OPERADORES
+   ========================================= */
+#operator-screen {
+    min-height: 100vh;
+    padding: 30px 50px;
+    background: var(--ri-bg);
+}
+
+.header-system {
+    display: flex; justify-content: space-between; align-items: center;
+    border-bottom: 1px solid #333; padding-bottom: 15px; margin-bottom: 20px;
+    font-family: var(--font-mono); color: var(--ri-cyan);
+}
+.nav-arrow { cursor: pointer; font-weight: bold; opacity: 0.7; }
+.nav-arrow:hover { opacity: 1; text-shadow: 0 0 5px var(--ri-cyan); }
+
+/* CONTENEDOR DE SCROLL HORIZONTAL */
+.scroll-container { position: relative; width: 100%; display: flex; align-items: center; }
+
+.operator-grid {
+    display: grid;
+    grid-template-rows: repeat(2, 380px); /* 2 filas fijas */
+    grid-auto-flow: column; /* Crecer hacia la derecha */
+    grid-auto-columns: 220px; /* Ancho de tarjeta */
+    gap: 20px;
+    overflow-x: auto;
+    width: 100%;
+    padding-bottom: 20px;
+    
+    /* Scrollbar Fina */
+    scrollbar-width: thin;
+    scrollbar-color: var(--ri-cyan) #111;
+}
+
+/* Tarjetas individuales */
+.op-card {
+    background: #151515; border: 1px solid #333;
+    position: relative; overflow: hidden; cursor: pointer;
+    transition: 0.3s;
+}
+.op-card:hover { border-color: var(--ri-cyan); transform: translateY(-5px); }
+
+.op-img-container { height: 280px; position: relative; background: #000; }
+.op-portrait { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.op-class-icon { position: absolute; top: 10px; left: 10px; width: 35px; z-index: 2; filter: drop-shadow(0 0 3px black); }
+.op-rarity { position: absolute; bottom: 5px; right: 5px; color: var(--ri-gold); font-size: 14px; text-shadow: 1px 1px 2px black;}
+
+.op-info { padding: 10px; background: #111; border-top: 2px solid #333; }
+.op-card:hover .op-info { border-top-color: var(--ri-cyan); }
+.op-name { font-weight: bold; font-size: 14px; text-transform: uppercase; }
+.op-status { font-size: 10px; color: var(--ri-cyan); font-family: var(--font-mono); }
+
+/* Botones laterales */
+.scroll-btn {
+    position: absolute; z-index: 10;
+    background: rgba(0,0,0,0.8); color: var(--ri-cyan);
+    border: 1px solid var(--ri-cyan); font-size: 24px;
+    height: 60px; width: 40px; cursor: pointer;
+}
+.scroll-btn.left { left: -20px; }
+.scroll-btn.right { right: -20px; }
+
+
+/* =========================================
+   4. MODAL / FICHA DE PERSONAJE (CORREGIDO)
+   ========================================= */
+.modal-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.92); /* Fondo muy oscuro */
+    z-index: 2000;
+    display: flex; justify-content: center; align-items: center;
+    opacity: 0; pointer-events: none; transition: 0.3s;
+    backdrop-filter: blur(5px);
+}
+.modal-overlay.active { opacity: 1; pointer-events: all; }
+
+/* El logo de fondo arreglado */
+.modal-bg-logo {
+    position: absolute; width: 600px;
+    opacity: 0.04; /* Casi invisible */
+    z-index: -1; pointer-events: none;
+}
+
+.modal-content {
+    display: flex; width: 95%; max-width: 1100px; height: 85vh;
+    background: #0f0f0f; border: 1px solid #333;
+    box-shadow: 0 0 50px black; position: relative;
+    overflow: hidden; /* IMPORTANTE: Evita desbordes */
+}
+
+/* Lado Izquierdo: Foto */
+.modal-left {
+    flex: 1.3; position: relative;
+    background: radial-gradient(circle, #1a1a1a 0%, #000 100%);
+    overflow: hidden;
+}
+.modal-art {
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: top center;
+    mask-image: linear-gradient(to right, black 85%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, black 85%, transparent 100%);
+}
+.modal-class-container {
+    position: absolute; top: 25px; left: 25px;
+    display: flex; gap: 10px; align-items: center; z-index: 5;
+}
+.modal-class-container img { width: 45px; filter: invert(1); opacity: 0.7; }
+#modal-class-text { font-family: var(--font-mono); font-size: 20px; font-weight: bold; color: rgba(255,255,255,0.3); }
+
+/* Lado Derecho: Datos */
+.modal-right {
+    flex: 1; padding: 40px;
+    background: #0a0a0a; border-left: 1px solid #222;
+    display: flex; flex-direction: column;
+    overflow-y: auto; /* Scroll solo aquí */
+    
+    scrollbar-width: thin; scrollbar-color: var(--ri-cyan) #000;
+}
+
+.file-header { border-bottom: 2px solid var(--ri-cyan); padding-bottom: 10px; margin-bottom: 25px; }
+.file-header h1 { font-size: 48px; margin: 0; line-height: 1; text-transform: uppercase; color: white; }
+.modal-stars { color: var(--ri-gold); font-size: 22px; margin-top: 5px; letter-spacing: 3px; }
+
+.file-body { font-family: var(--font-mono); font-size: 13px; color: #aaa; }
+
+.data-row {
+    display: flex; justify-content: space-between;
+    padding: 10px 0; border-bottom: 1px solid #1c1c1c;
+}
+.label { color: #555; font-weight: bold; }
+.value { color: var(--ri-cyan); font-weight: bold; text-align: right; }
+
+.separator-line { height: 2px; width: 40px; background: var(--ri-cyan); margin: 30px 0; }
+.data-bio { line-height: 1.8; }
+.bio-text span { color: var(--ri-cyan); margin-left: 5px; }
+.flavor-text { margin-top: 20px; padding: 15px; background: #111; border-left: 3px solid #333; font-style: italic; color: #666; font-size: 12px; }
+
+.close-modal {
+    position: absolute; top: 15px; right: 20px;
+    background: none; border: none; font-size: 40px; color: #444;
+    cursor: pointer; line-height: 0.5; z-index: 100;
+}
+.close-modal:hover { color: white; }
+
+
+/* =========================================
+   5. RESPONSIVE (MÓVIL)
+   ========================================= */
+@media (max-width: 768px) {
+    /* Login */
+    .login-card { flex-direction: column; width: 90%; text-align: center; }
+    .ui-corner { width: 20px; height: 20px; }
+    
+    /* Menú */
+    .menu-container { flex-direction: column; }
+    #main-menu { height: auto; padding: 50px 0; }
+    
+    /* Operadores */
+    .header-system { flex-direction: column; gap: 10px; align-items: flex-start; }
+    .scroll-btn { display: none; } /* Ocultar flechas en móvil */
+    
+    .operator-grid {
+        grid-template-rows: auto; /* 1 sola fila larga */
+        grid-auto-columns: 180px;
+    }
+    
+    /* Modal en móvil */
+    .modal-content { flex-direction: column; height: 100%; border: none; }
+    .modal-left { flex: 0.8; }
+    .modal-right { flex: 1.2; padding: 20px; }
+    .file-header h1 { font-size: 32px; }
+    .modal-art { mask-image: none; -webkit-mask-image: none; }
+}
+
+/* Animaciones */
+@keyframes loadBar { 0% { width: 0%; } 100% { width: 100%; } }
+@keyframes pulseLogo { 0%, 100% { transform: scale(1); filter: brightness(1); } 50% { transform: scale(1.05); filter: brightness(1.2); } }
+@keyframes slideUp { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+
+/* Logo de la Facción en la foto (cuando ves info completa)*/
+.faction-watermark {
+    position: absolute;
+    top: 30px;
+    right: 30px; /* Lo coloca a la derecha */
+    width: 100px; /* Tamaño del logo */
+    opacity: 0.8; /* Un poco transparente */
+    z-index: 10;
+    filter: drop-shadow(0 0 5px rgba(0,0,0,0.8)); /* Sombra para que se vea sobre fondos claros */
+    transition: all 0.5s ease;
+}
+
+/* Efecto al pasar el ratón (opcional) */
+.faction-watermark:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+
+/* Icono de Facción (Arriba Derecha en la tarjeta pequeña) */
+.op-faction-icon {
+    position: absolute;
+    top: 8px;      /* Un poco separado del borde superior */
+    right: 8px;    /* Un poco separado del borde derecho */
+    width: 32px;   /* Tamaño pequeño y discreto */
+    height: auto;
+    z-index: 10;   /* Asegura que quede por encima de la foto del personaje */
+    opacity: 0.85; /* Ligeramente transparente para integrarse mejor */
+    filter: drop-shadow(0 1px 3px rgba(0,0,0,0.8)); /* Sombra para que se distinga en fondos claros */
+}
+
+/* Opcional: Un pequeño brillo al pasar el ratón por la tarjeta */
+.op-card:hover .op-faction-icon {
+    opacity: 1;
+    filter: drop-shadow(0 0 5px var(--ri-cyan));
+}
+
+
+
+
+/* --- FLECHA FLOTANTE DEL MENÚ  (para volver atras)--- */
+.nav-arrow-fixed {
+    position: absolute; /* Flota sobre el contenido */
+    top: 40px;
+    left: 40px;
+    cursor: pointer;
+    font-family: var(--font-mono);
+    color: var(--ri-cyan);
+    font-weight: bold;
+    letter-spacing: 2px;
+    font-size: 14px;
+    opacity: 0.6;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+}
+
+.nav-arrow-fixed span {
+    font-size: 18px;
+}
+
+.nav-arrow-fixed:hover {
+    opacity: 1;
+    color: white;
+    text-shadow: 0 0 8px var(--ri-cyan);
+    transform: translateX(-5px);
+}
+
+/* Ajuste para móvil */
+@media (max-width: 768px) {
+    .nav-arrow-fixed {
+        top: 20px;
+        left: 20px;
+        font-size: 12px;
+    }
+}
