@@ -10,6 +10,7 @@
 </head>
 
 <body>
+    <audio id="sound-click" src="click.mp3" preload="auto"></audio>
     <section id="login-screen">
         <div class="ui-corner top-left"></div>
         <div class="ui-corner top-right"></div>
@@ -41,7 +42,7 @@
                 <div class="menu-text">FACCIONES</div>
             </div>
             <div id="btn-personajes" class="menu-card">
-                <div class="menu-img-placeholder"><img src="eryndra.jpg"></div>
+                <div class="menu-img-placeholder"><img src="Rhodes_Island.png"></div>
                 <div class="menu-text">PERSONAJES</div>
             </div>
         </div>
@@ -154,9 +155,9 @@ const operators = [
         // --- EJEMPLO 1: ERYNDRA (Completo) ---
         { 
             name: 'ERYNDRA', 
-            rarity: 6, 
+            rarity: 4, 
             class: 'Guard', 
-            img: 'eryndra.jpg',
+            img: 'personajes/eryndra.png',
             faction: 'Rhodes_Island.png',
             // AQUÍ ESTÁN LOS DATOS NUEVOS PERSONALIZABLES:
             gender: 'Female',
@@ -171,37 +172,199 @@ const operators = [
                 skill: 'Excellent'
             },
             // La frase de abajo
-            flavorText: "\"Eryndra reporting in. Are you the Doctor? Don't disappoint me.\""
+            flavorText: "\"Eryndra reportándos. ¿Eres el Doctor?.\""
         },
 
-        // --- EJEMPLO 2: AMIYA ---
         { 
-            name: 'AMIYA', 
-            rarity: 5, 
+            name: 'BORIS SMIRVO', 
+            rarity: 4, 
             class: 'Caster', 
-            img: 'Amiya.png',
+            img: 'personajes/boris.jpg',
             faction: 'Rhodes_Island.png',
-            gender: 'Female',
-            combatExp: '3 Years',
-            birthplace: 'Rim Billiton',
+            // AQUÍ ESTÁN LOS DATOS NUEVOS PERSONALIZABLES:
+            gender: 'Male',
+            combatExp: '10 Years',
+            birthplace: 'Kazdel',
+            // Estadísticas físicas
             stats: {
-                strength: 'Normal',
-                mobility: 'Standard',
-                endurance: 'Normal',
-                tactics: 'Excellent',
-                skill: 'Standard'
+                strength: 'Excellent',
+                mobility: 'Outstanding',
+                endurance: 'Standard',
+                tactics: 'Standard',
+                skill: 'Excellent'
             },
-            flavorText: "\"I will monitor your vitals, Doctor. Please don't push yourself.\""
+            // La frase de abajo
+            flavorText: "\"Que me queda más allá de mi mismo? Solamente pólvora y sangre..\""
         },
-           //para que no ocupe tanto ponlo en una sola linea asi te ahorra espacio 
-        // --- EJEMPLO 3: SILVERASH ---
-        { name: 'SILVERASH', rarity: 6, class: 'Guard', img: 'Silverash.png',faction: 'Rhodes_Island.png', gender: 'Male',combatExp: 'Unknown',birthplace: 'Kjerag', stats: { strength: 'Excellent', mobility: 'Standard', endurance: 'Excellent', tactics: 'Outstanding', skill: 'Outstanding' }, flavorText: "\"Whatever the cost, Kjerag will survive.\""
-    },
+        { 
+            name: 'DAMIAN MARTINEZ', 
+            rarity: 4, 
+            class: 'Caster', 
+            img: 'personajes/damian.jpg',
+            faction: 'Rhodes_Island.png',
+            // AQUÍ ESTÁN LOS DATOS NUEVOS PERSONALIZABLES:
+            gender: 'Male',
+            combatExp: '10 Years',
+            birthplace: 'Kazdel',
+            // Estadísticas físicas
+            stats: {
+                strength: 'Excellent',
+                mobility: 'Outstanding',
+                endurance: 'Standard',
+                tactics: 'Standard',
+                skill: 'Excellent'
+            },
+            // La frase de abajo
+            flavorText: "\"Que me queda más allá de mi mismo? Solamente pólvora y sangre..\""
+        },
+        { 
+            name: 'HANS MÜLLER', 
+            rarity: 4, 
+            class: 'Vanguard', 
+            img: 'personajes/hans.jpg',
+            faction: 'Rhodes_Island.png',
+            // AQUÍ ESTÁN LOS DATOS NUEVOS PERSONALIZABLES:
+            gender: 'Male',
+            combatExp: '10 Years',
+            birthplace: 'Kazdel',
+            // Estadísticas físicas
+            stats: {
+                strength: 'Excellent',
+                mobility: 'Outstanding',
+                endurance: 'Standard',
+                tactics: 'Standard',
+                skill: 'Excellent'
+            },
+            // La frase de abajo
+            flavorText: "\"Que me queda más allá de mi mismo? Solamente pólvora y sangre..\""
+        },
+            { 
+            name: 'JEONG-IN', 
+            rarity: 4, 
+            class: 'Guard', 
+            img: 'personajes/jeongin.webp',
+            faction: 'Rhodes_Island.png',
+            // AQUÍ ESTÁN LOS DATOS NUEVOS PERSONALIZABLES:
+            gender: 'Male',
+            combatExp: '10 Years',
+            birthplace: 'Kazdel',
+            // Estadísticas físicas
+            stats: {
+                strength: 'Excellent',
+                mobility: 'Outstanding',
+                endurance: 'Standard',
+                tactics: 'Standard',
+                skill: 'Excellent'
+            },
+            // La frase de abajo
+            flavorText: "\"Que me queda más allá de mi mismo? Solamente pólvora y sangre..\""
+        },
+        { 
+            name: 'NAMAEL', 
+            rarity: 4, 
+            class: 'Vanguard', 
+            img: 'personajes/namael.jpg',
+            faction: 'Rhodes_Island.png',
+            // AQUÍ ESTÁN LOS DATOS NUEVOS PERSONALIZABLES:
+            gender: 'Male',
+            combatExp: '10 Years',
+            birthplace: 'Kazdel',
+            // Estadísticas físicas
+            stats: {
+                strength: 'Excellent',
+                mobility: 'Outstanding',
+                endurance: 'Standard',
+                tactics: 'Standard',
+                skill: 'Excellent'
+            },
+            // La frase de abajo
+            flavorText: "\"Que me queda más allá de mi mismo? Solamente pólvora y sangre..\""
+        },
+         { 
+            name: 'SCHADENFREUDE', 
+            rarity: 4, 
+            class: 'Specialist', 
+            img: 'personajes/schadenfreude.jpg',
+            faction: 'Rhodes_Island.png',
+            // AQUÍ ESTÁN LOS DATOS NUEVOS PERSONALIZABLES:
+            gender: 'Male',
+            combatExp: '10 Years',
+            birthplace: 'Kazdel',
+            // Estadísticas físicas
+            stats: {
+                strength: 'Excellent',
+                mobility: 'Outstanding',
+                endurance: 'Standard',
+                tactics: 'Standard',
+                skill: 'Excellent'
+            },
+            // La frase de abajo
+            flavorText: "\"Que me queda más allá de mi mismo? Solamente pólvora y sangre..\""
+        },
+            { 
+            name: 'SIROCCO', 
+            rarity: 4, 
+            class: 'Medic', 
+            img: 'personajes/sirocco.png',
+            faction: 'Rhodes_Island.png',
+            // AQUÍ ESTÁN LOS DATOS NUEVOS PERSONALIZABLES:
+            gender: 'Male',
+            combatExp: '10 Years',
+            birthplace: 'Kazdel',
+            // Estadísticas físicas
+            stats: {
+                strength: 'Excellent',
+                mobility: 'Outstanding',
+                endurance: 'Standard',
+                tactics: 'Standard',
+                skill: 'Excellent'
+            },
+            // La frase de abajo
+            flavorText: "\"Que me queda más allá de mi mismo? Solamente pólvora y sangre..\""
+        },
+                    { 
+            name: 'TATARA TODA', 
+            rarity: 4, 
+            class: 'Vanguard', 
+            img: 'personajes/tatara.jpg',
+            faction: 'Rhine_Lab.webp',
+            // AQUÍ ESTÁN LOS DATOS NUEVOS PERSONALIZABLES:
+            gender: 'Male',
+            combatExp: '10 Years',
+            birthplace: 'Kazdel',
+            // Estadísticas físicas
+            stats: {
+                strength: 'Excellent',
+                mobility: 'Outstanding',
+                endurance: 'Standard',
+                tactics: 'Standard',
+                skill: 'Excellent'
+            },
+            // La frase de abajo
+            flavorText: "\"Que me queda más allá de mi mismo? Solamente pólvora y sangre..\""
+        },
+       { 
+            name: 'YOSHIHIDE', 
+            rarity: 4, 
+            class: 'Vanguard', 
+            img: 'personajes/yoshihide.png',
+            faction: 'Rhodes_Island.png',
+            // AQUÍ ESTÁN LOS DATOS NUEVOS PERSONALIZABLES:
+            gender: 'Male',
+            combatExp: '10 Years',
+            birthplace: 'Kazdel',
+            // Estadísticas físicas
+            stats: {
+                strength: 'Excellent',
+                mobility: 'Outstanding',
+                endurance: 'Standard',
+                tactics: 'Standard',
+                skill: 'Excellent'
+            },
+            // La frase de abajo
+            flavorText: "\"Que me queda más allá de mi mismo? Solamente pólvora y sangre..\""
+        },
 
-        // ... PUEDES SEGUIR AÑADIENDO PERSONAJES CON ESTE FORMATO ...
-        // Si no pones datos, saldrá "Unknown" por defecto.
-        //En este ejemplo es si no rellenas los campos se establecen todos por defecto a "Unknown"
-        { name: 'TEXAS', rarity: 5, class: 'Vanguard', img: 'Texas.png' } 
     ];
 
 
@@ -396,9 +559,52 @@ function openCharacterModal(op) {
         if (e.target === modal) modal.classList.remove('active');
     });
     // 6. EVENTOS DE BOTONES
-    document.getElementById('loginBtn').addEventListener('click', () => {
-        navegarA('main-menu');
-    });
+document.getElementById('loginBtn').addEventListener('click', () => {
+    const sonido = document.getElementById('sound-click');
+    if(sonido) sonido.play();
+
+    navegarA('main-menu');
+
+    // Lanzamos la animación de las tarjetas con un pequeño retraso
+    setTimeout(() => {
+        const cards = document.querySelectorAll('.menu-card');
+        cards.forEach((card, index) => {
+            setTimeout(() => {
+                card.classList.add('show');
+            }, index * 150); // Esto crea el efecto "cascada" (una tras otra)
+        });
+    }, 400); 
+});
+
+// 2. Ajuste en la función navegarA (opcional pero recomendado)
+// Asegúrate de que al salir del menú, las clases se limpien para que 
+// la animación se repita si vuelves a entrar.
+function navegarA(seccionDestinoId, guardarEnHistorial = true) {
+    const pantallaActual = document.querySelector('section[style*="display: block"], section[style*="display: flex"]') || document.getElementById('login-screen');
+    const pantallaDestino = document.getElementById(seccionDestinoId);
+
+    if (pantallaActual.id === seccionDestinoId) return;
+
+    // Limpiar clases de animación si salimos del menú
+    if (pantallaActual.id === 'main-menu') {
+        document.querySelectorAll('.menu-card').forEach(c => c.classList.remove('show'));
+    }
+
+    pantallaActual.style.opacity = '0';
+    
+    setTimeout(() => {
+        pantallaActual.style.display = 'none';
+        pantallaDestino.style.display = screenConfig[seccionDestinoId] || 'block';
+        
+        setTimeout(() => {
+            pantallaDestino.style.opacity = '1';
+        }, 50);
+    }, 300);
+
+    if (guardarEnHistorial) {
+        window.history.pushState({ screenId: seccionDestinoId }, "", "#" + seccionDestinoId.replace('-screen', ''));
+    }
+}
 
     document.getElementById('btn-personajes').addEventListener('click', () => {
         loadOperators();
