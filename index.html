@@ -605,18 +605,28 @@ const operators = [
     }
 
     // 4. EVENTO PARA LAS FLECHAS DEL NAVEGADOR
-    window.addEventListener('popstate', (event) => {
-        if (event.state && event.state.screenId) {
-            // Si volvemos a personajes, nos aseguramos de que carguen
-            if (event.state.screenId === 'operator-screen') loadOperators();
-            
-            // Navegamos sin guardar en historial (false) porque ya estamos viajando en él
-            navegarA(event.state.screenId, false);
-        } else {
-            // Si el historial está vacío, volvemos al login por seguridad
-            navegarA('login-screen', false);
+window.addEventListener('popstate', (event) => {
+    if (event.state && event.state.screenId) {
+        if (event.state.screenId === 'operator-screen') loadOperators();
+
+        // --- NUEVA LÓGICA ---
+        if (event.state.screenId === 'main-menu') {
+            setTimeout(() => {
+                const cards = document.querySelectorAll('.menu-card');
+                cards.forEach((card, index) => {
+                    setTimeout(() => {
+                        card.classList.add('show');
+                    }, index * 150);
+                });
+            }, 400);
         }
-    });
+        // ---------------------
+
+        navegarA(event.state.screenId, false);
+    } else {
+        navegarA('login-screen', false);
+    }
+});
 
 // --- FUNCIÓN loadOperators ACTUALIZADA ---
 function loadOperators() {
@@ -813,4 +823,5 @@ const container = document.getElementById('opGrid');
 
 </script>
 </body>
+
 </html>
