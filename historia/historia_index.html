@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rhodes Island | Archive Database</title>
+    <link rel="stylesheet" href="../estilos.css">
+    <link rel="stylesheet" href="temporadas.css">
+</head>
+<body>
+    <div class="nav-arrow-fixed" onclick="window.history.back()">
+        <span>&lt;</span> RETURN_TO_MENU
+    </div>
+
+    <section class="season-section">
+        <div class="header-system">
+            <span>DATABASE // LOGS_RECORDS</span>
+        </div>
+
+        <div class="season-grid">
+            <div class="season-item" onclick="seleccionar(1)">
+                <div class="season-content">
+                    <span class="s-id">PHASE_01</span>
+                    <span class="s-label">Evil Time Part 1 & 2</span>
+                </div>
+            </div>
+
+            <div class="season-item" onclick="seleccionar(2)">
+                <div class="season-content">
+                    <span class="s-id">PHASE_02</span>
+                    <span class="s-label">TEMPORADA 2</span>
+                </div>
+            </div>
+
+            <div class="season-item" onclick="seleccionar(3)">
+                <div class="season-content">
+                    <span class="s-id">PHASE_03</span>
+                    <span class="s-label">TEMPORADA 3</span>
+                </div>
+            </div>
+
+            <div class="season-item" onclick="seleccionar(4)">
+                <div class="season-content">
+                    <span class="s-id">PHASE_04</span>
+                    <span class="s-label">TEMPORADA 4</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function seleccionar(id) {
+            console.log("Accediendo a la Temporada: " + id);
+            // Aquí puedes añadir la redirección, ej: window.location.href = 'temporada' + id + '.html';
+        }
+    </script>
+</body>
+</html>

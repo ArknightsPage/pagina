@@ -1,0 +1,91 @@
+/* =========================================
+   SELECTOR DE HISTORIAS (BASADO EN RI-SYSTEM)
+   ========================================= */
+
+.season-section {
+    min-height: 100vh;
+    padding: 100px 50px; /* Espacio para la flecha flotante */
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.season-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    width: 100%;
+    max-width: 900px;
+    margin-top: 30px;
+}
+
+.season-item {
+    background: var(--ri-card);
+    border: 1px solid #333;
+    padding: 40px 30px;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+    /* Corte diagonal estilo Rhodes Island */
+    clip-path: polygon(0 0, 95% 0, 100% 25%, 100% 100%, 5% 100%, 0 75%);
+}
+
+.season-item::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 4px;
+    height: 100%;
+    background: transparent;
+    transition: 0.3s;
+}
+
+.season-item:hover {
+    border-color: var(--ri-cyan);
+    background: #1c1c1c;
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px rgba(35, 192, 210, 0.1);
+}
+
+.season-item:hover::before {
+    background: var(--ri-cyan);
+}
+
+.season-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.s-id {
+    font-family: var(--font-mono);
+    color: var(--ri-cyan);
+    font-size: 12px;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+    opacity: 0.8;
+}
+
+.s-label {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: white;
+}
+
+/* Efecto al hacer clic */
+.season-item:active {
+    transform: scale(0.98);
+}
+
+/* Responsive para móviles */
+@media (max-width: 768px) {
+    .season-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .season-section {
+        padding: 80px 20px;
+    }
+}
