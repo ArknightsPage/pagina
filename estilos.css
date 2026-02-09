@@ -202,7 +202,7 @@ button:hover { background: white; color: black; }
 .op-img-container { height: 280px; position: relative; background: #000; }
 .op-portrait { width: 100%; height: 100%; object-fit: cover; object-position: top; }
 .op-class-icon { position: absolute; top: 10px; left: 10px; width: 35px; z-index: 2; filter: drop-shadow(0 0 3px black); }
-.op-rarity { position: absolute; bottom: 5px; right: 5px; color: var(--ri-gold); font-size: 14px; text-shadow: 1px 1px 2px black;}
+.op-rarity { position: absolute; bottom: 5px; right: 5px;}
 
 .op-info { padding: 10px; background: #111; border-top: 2px solid #333; }
 .op-card:hover .op-info { border-top-color: var(--ri-cyan); }
