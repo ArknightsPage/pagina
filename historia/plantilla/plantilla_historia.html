@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rhodes Island // ARCHIVES</title>
+    <link rel="stylesheet" href="../../estilos.css">
+</head>
+<body>
+
+    <div class="scanlines"></div>
+    <div class="particles"></div>
+
+    <section id="history-menu-screen" style="display: block;"> <div class="header-system">
+            <a href="../../index.html" class="nav-arrow" style="text-decoration: none; color: inherit;">
+                <span>◄</span> RETURN_TO_MAIN
+            </a>
+            <div class="header-title">
+                <span>ARCHIVE // RHODES_ISLAND_RECORDS</span>
+            </div>
+        </div>
+
+        <div class="history-grid">
+            
+            <div class="history-card disabled">
+                <span class="h-code">REC_01</span>
+                <h3>MAPA Y PAÍSES</h3>
+                <p>// Geopolítica de Terra</p>
+            </div>
+
+            <div class="history-card" id="btn-open-razas">
+                <span class="h-code">REC_02</span>
+                <h3>RAZAS DE TERRA</h3>
+                <p>// Análisis biológico y rasgos</p>
+            </div>
+
+            <div class="history-card disabled">
+                <span class="h-code">REC_03</span>
+                <h3>ORIPATÍA</h3>
+                <p>// Origen y patología</p>
+            </div>
+
+            <div class="history-card disabled">
+                <span class="h-code">REC_04</span>
+                <h3>ARTES</h3>
+                <p>// Clasificación de Artes</p>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="razas-screen" style="display: none; opacity: 0;">
+        
+        <div class="nav-arrow-fixed" id="btn-back-razas-menu" style="top: 20px; left: 20px; cursor: pointer;">
+            <span>◄</span> BACK_TO_ARCHIVES
+        </div>
+
+<div class="reader-container" style="max-width: 1200px;"> <div class="reader-header">
+        <h1>REGISTRO DE RAZAS (TERRA)</h1>
+        <div class="reader-meta">DATABASE ACCESS // TOTAL ENTRIES: 30+</div>
+    </div>
+
+    <div class="race-grid" id="race-grid-container">
+        </div>
+
+    <div class="end-log">// END OF ARCHIVE</div>
+</div>
+    </section>
+
+
+
+<div id="race-modal" class="modal-overlay">
+    <div class="modal-content">
+        <button class="close-modal" id="closeRaceModal">×</button>
+        
+        <div class="modal-left">
+            <img id="modal-race-img" src="" class="modal-art" alt="Race Image">
+        </div>
+
+        <div class="modal-right">
+            <div class="file-header">
+                <h1 id="modal-race-name">NOMBRE RAZA</h1>
+                <div class="modal-stars" style="color: var(--ri-cyan); font-size: 12px; letter-spacing: 2px; margin-top: 10px;">
+                    BIOLOGICAL ENTRY // CLASS: ELDER
+                </div>
+            </div>
+
+            <div class="file-body">
+                <div class="separator-line"></div>
+                <p id="modal-race-desc" style="font-size: 16px; line-height: 1.8; color: #ccc;">
+                    Descripción aquí...
+                </p>
+            </div>
+            
+            <div class="modal-footer" style="margin-top: auto; font-size: 10px; color: #333; text-align: right;">
+                RHODES ISLAND // ARCHIVES DEPT.
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+ <script>
+    // 1. REFERENCIAS A LOS ELEMENTOS
+    const menuScreen = document.getElementById('history-menu-screen');
+    const razasScreen = document.getElementById('razas-screen');
+    const btnOpenRazas = document.getElementById('btn-open-razas');
+    const btnBackRazas = document.getElementById('btn-back-razas-menu');
+    
+    // Referencias del Modal
+    const raceModal = document.getElementById('race-modal');
+    const closeRaceBtn = document.getElementById('closeRaceModal');
+    const modalImg = document.getElementById('modal-race-img');
+    const modalName = document.getElementById('modal-race-name');
+    const modalDesc = document.getElementById('modal-race-desc');
+
+    // 2. BASE DE DATOS DE RAZAS
+    const racesData = [
+        {
+            nombre: "CAUTUS",
+            desc: "Humanoides con rasgos de lagomorfo (conejo). Se caracterizan por sus largas orejas y una capacidad auditiva superior a la media. Son los habitantes principales de Rim Billiton, donde trabajan frecuentemente en la minería. Suelen ser ágiles y precavidos.",
+            foto: "Rhodes_Island.png" 
+        },
+        {
+            nombre: "SARKAZ",
+            desc: "Conocidos vulgarmente como 'Demonios'. Nativos de Kazdel, una nación devastada por la guerra civil. Poseen cuernos y colas de diversas formas. Históricamente han sido discriminados en Terra debido a su alta susceptibilidad a la Oripatía y su antigua tradición en las Artes.",
+            foto: "Rhodes_Island.png"
+        },
+        {
+            nombre: "LUPO",
+            desc: "Humanoides con rasgos de lobo (orejas y cola tupida). Originarios principalmente de Siracusa, una nación regida por familias mafiosas. Tienen un fuerte sentido de la jerarquía, la familia y la lealtad. Son cazadores naturales.",
+            foto: "Rhodes_Island.png"
+        },
+        {
+            nombre: "FELINE",
+            desc: "Una de las razas más numerosas y extendidas de Terra. Poseen rasgos felinos como orejas y colas flexibles. Su apariencia varía enormemente, desde gatos domésticos hasta grandes felinos. Son conocidos por su agilidad y visión nocturna.",
+            foto: "Rhodes_Island.png"
+        },
+        {
+            nombre: "SANKTA",
+            desc: "Habitantes sagrados de Laterano. Se distinguen por tener halos sobre sus cabezas y alas de luz en la espalda. Tienen una afinidad única con las armas de fuego de origen (Arts Units) y siguen una estricta ley religiosa.",
+            foto: "Rhodes_Island.png"
+        },
+        {
+            nombre: "ONI",
+            desc: "Guerreros formidables nativos del lejano oriente (Higashi). Poseen una fuerza física inmensa y cuernos prominentes en la frente. Son conocidos por su código de honor y su destreza en combate cuerpo a cuerpo.",
+            foto: "Rhodes_Island.png"
+        }
+        // ... AÑADE MÁS AQUÍ ...
+    ];
+
+    // 3. FUNCIÓN PARA DIBUJAR LAS TARJETAS
+    function cargarRazas() {
+        const grid = document.getElementById('race-grid-container');
+        grid.innerHTML = ''; 
+
+        racesData.forEach((raza, index) => {
+            const code = `R-${String(index + 1).padStart(2, '0')}`;
+            const card = document.createElement('div');
+            card.className = 'race-card';
+            
+            // AÑADIMOS EL EVENTO CLICK AQUÍ
+            card.onclick = () => abrirModalRaza(raza); 
+            
+            card.innerHTML = `
+                <div class="race-code">${code}</div>
+                <div class="race-img-box">
+                    <img src="${raza.foto}" alt="${raza.nombre}">
+                </div>
+                <div class="race-info">
+                    <div class="race-name">${raza.nombre}</div>
+                    <div class="race-desc" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                        ${raza.desc}
+                    </div>
+                </div>
+            `;
+            grid.appendChild(card);
+        });
+    }
+
+    // 4. FUNCIÓN PARA ABRIR EL MODAL (NUEVO)
+    function abrirModalRaza(datosRaza) {
+        modalName.innerText = datosRaza.nombre;
+        modalDesc.innerText = datosRaza.desc;
+        modalImg.src = datosRaza.foto;
+        
+        raceModal.classList.add('active'); // Muestra el modal
+    }
+
+    // 5. CERRAR EL MODAL
+    closeRaceBtn.addEventListener('click', () => {
+        raceModal.classList.remove('active');
+    });
+
+    // Cerrar si clicamos fuera de la tarjeta
+    raceModal.addEventListener('click', (e) => {
+        if (e.target === raceModal) {
+            raceModal.classList.remove('active');
+        }
+    });
+
+    // 6. NAVEGACIÓN ENTRE PANTALLAS
+    btnOpenRazas.addEventListener('click', () => {
+        cargarRazas();
+        menuScreen.style.display = 'none';
+        razasScreen.style.display = 'flex';
+        setTimeout(() => { razasScreen.style.opacity = '1'; }, 10);
+    });
+
+    btnBackRazas.addEventListener('click', () => {
+        razasScreen.style.opacity = '0';
+        setTimeout(() => {
+            razasScreen.style.display = 'none';
+            menuScreen.style.display = 'block';
+        }, 300);
+    });
+</script>
+</body>
+</html>
