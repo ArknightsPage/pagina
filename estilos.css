@@ -303,32 +303,118 @@ button:hover { background: white; color: black; }
 
 
 /* =========================================
-   5. RESPONSIVE (MÓVIL)
+   5. RESPONSIVE (MÓVIL) - ADAPTACIÓN TOTAL
    ========================================= */
 @media (max-width: 768px) {
-    /* Login */
-    .login-card { flex-direction: column; width: 90%; text-align: center; }
-    .ui-corner { width: 20px; height: 20px; }
+    /* --- 1. LOGIN --- */
+    .login-card { 
+        flex-direction: column; 
+        width: 85%; 
+        padding: 25px; 
+        gap: 20px; 
+        text-align: center; 
+    }
+    .main-logo { width: 100px; }
+    .progress-bar { width: 100%; max-width: 250px; margin: 15px auto; }
+    .glitch-text { font-size: 18px; letter-spacing: 3px; }
+    .ui-corner { width: 15px; height: 15px; }
     
-    /* Menú */
-    .menu-container { flex-direction: column; }
-    #main-menu { height: auto; padding: 50px 0; }
+    /* --- 2. MENÚ PRINCIPAL --- */
+    #main-menu { height: auto; min-height: 100vh; padding: 80px 0 40px 0; }
+    .menu-container { flex-direction: column; width: 100%; align-items: center; gap: 25px; }
+    .menu-card { width: 85%; max-width: 320px; }
+    .menu-img-placeholder { height: 200px; }
     
-    /* Operadores */
+    /* --- 3. OPERADORES --- */
+    #operator-screen { padding: 60px 15px 20px 15px; } /* Más espacio arriba para la flecha de volver */
     .header-system { flex-direction: column; gap: 10px; align-items: flex-start; }
-    .scroll-btn { display: none; } /* Ocultar flechas en móvil */
+    .scroll-btn { display: none; } /* Ocultar flechas en móvil, se usa el scroll táctil */
     
     .operator-grid {
-        grid-template-rows: auto; /* 1 sola fila larga */
-        grid-auto-columns: 180px;
+        grid-template-rows: auto; /* 1 sola fila en móvil para facilitar scroll lateral */
+        grid-auto-columns: 150px; /* Tarjetas ligeramente más estrechas */
+        gap: 15px;
+        padding-bottom: 15px;
+    }
+    .op-img-container { height: 200px; }
+    
+    /* --- 4. MODAL / FICHA DE PERSONAJE --- */
+    .modal-content { 
+        flex-direction: column; 
+        height: 100vh; 
+        width: 100%; 
+        max-width: 100%;
+        border: none; 
+        border-radius: 0;
+        overflow-y: auto; /* Scroll a toda la ventana en móvil */
+    }
+    .modal-left { 
+        flex: none; 
+        height: 350px; /* Altura fija para la imagen en móvil */
+        width: 100%; 
+    }
+    .modal-art { 
+        /* Cambiamos la máscara para que se difumine hacia abajo en vez de hacia la derecha */
+        mask-image: linear-gradient(to bottom, black 60%, transparent 100%); 
+        -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+        object-position: center top; 
+    }
+    .modal-right { 
+        flex: none; 
+        padding: 20px; 
+        border-left: none; 
+        overflow-y: visible; /* El scroll lo hace el contenedor padre ahora */
+        margin-top: -50px; /* Sube el texto para solaparse con el degradado de la imagen */
+        z-index: 10;
+    }
+    .file-header h1 { font-size: 32px; }
+    
+    /* Ajuste del botón cerrar para que sea fácil de tocar en móvil */
+    .close-modal { 
+        top: 15px; 
+        right: 15px; 
+        font-size: 30px; 
+        background: rgba(0,0,0,0.6); 
+        width: 40px; 
+        height: 40px; 
+        display: flex; justify-content: center; align-items: center;
+        border-radius: 50%;
+        color: white;
     }
     
-    /* Modal en móvil */
-    .modal-content { flex-direction: column; height: 100%; border: none; }
-    .modal-left { flex: 0.8; }
-    .modal-right { flex: 1.2; padding: 20px; }
-    .file-header h1 { font-size: 32px; }
-    .modal-art { mask-image: none; -webkit-mask-image: none; }
+    /* --- 5. MENÚ HISTORIA (DATABASE) --- */
+    .history-grid { 
+        padding: 60px 15px 30px 15px; 
+        gap: 20px; 
+        grid-template-columns: 1fr; /* 1 sola columna ocupando el 100% */
+    }
+    .history-card { padding: 20px; }
+    .history-card h3 { font-size: 20px; }
+    
+    /* --- 6. PANTALLA DE LECTURA (LORE) --- */
+    #razas-screen { padding: 60px 15px 30px 15px; }
+    .reader-container { padding: 25px 20px; }
+    .reader-header h1 { font-size: 24px; }
+    .reader-body { font-size: 15px; line-height: 1.6; }
+    .lore-entry h2 { font-size: 16px; margin-top: 25px; }
+    
+    /* --- 7. GRID DE RAZAS --- */
+    .race-grid { 
+        grid-template-columns: 1fr; /* Una tarjeta por fila en móvil */
+        gap: 20px; 
+    }
+    .race-img-box { height: 200px; } /* Imagen un poco más grande para compensar el ancho completo */
+    
+    /* --- 8. FLECHAS FLOTANTES DE NAVEGACIÓN --- */
+    .nav-arrow-fixed {
+        top: 15px;
+        left: 15px;
+        font-size: 12px;
+        background: rgba(10, 10, 10, 0.8); /* Fondo oscuro para que se lea sobre cualquier imagen */
+        padding: 8px 12px;
+        border-radius: 5px;
+        border: 1px solid #333;
+    }
 }
 
 /* Animaciones */
