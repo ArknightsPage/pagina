@@ -1,24 +1,36 @@
 /* =========================================
-   ESTILOS GENERALES (BASE)
+   VARIABLES Y ESTILOS GENERALES (MEDIEVAL)
    ========================================= */
 :root {
-    --ri-cyan: #23c0d2;
-    --ri-gold: #ffcf40;
-    --ri-bg: #0a0a0a;
-    --ri-card: #151515;
-    --font-mono: 'Courier New', Courier, monospace;
+    --ald-gold: #d4af37;
+    --ald-gold-dim: #8a6d1c;
+    --ald-crimson: #7a1c1c;
+    --ald-bg: #120f0c;
+    --ald-card: #1c1713;
+    --ald-parchment: #e8dcc4;
+    --ald-text-muted: #9e917d;
+    --ald-border: #3d3124;
+
+    --font-title: 'Cinzel', Georgia, serif;
+    --font-body: 'Lora', 'Times New Roman', serif;
+}
+
+* {
+    box-sizing: border-box;
 }
 
 body {
     margin: 0;
-    background-color: var(--ri-bg);
-    color: white;
-    font-family: 'Segoe UI', sans-serif;
+    background-color: var(--ald-bg);
+    color: var(--ald-parchment);
+    font-family: var(--font-body);
     overflow-x: hidden;
+    /* Textura sutil de oscuridad y viñeta */
+    background-image: radial-gradient(circle at center, #1e1812 0%, #0a0806 100%);
 }
 
 /* =========================================
-   1. PANTALLA LOGIN
+   1. PANTALLA DE ACCESO (SELLO REAL)
    ========================================= */
 #login-screen {
     height: 100vh;
@@ -26,455 +38,214 @@ body {
     justify-content: center;
     align-items: center;
     position: relative;
-    background: radial-gradient(circle, #1a1a1a 0%, #000 100%);
     overflow: hidden;
 }
 
 .login-card {
-    background: rgba(20, 20, 20, 0.9);
-    padding: 40px;
-    border-top: 2px solid var(--ri-cyan);
+    background: rgba(24, 19, 15, 0.95);
+    padding: 45px 50px;
+    border: 1px solid var(--ald-border);
+    border-top: 3px solid var(--ald-gold);
+    border-bottom: 3px solid var(--ald-gold);
     display: flex;
     align-items: center;
     gap: 40px;
-    box-shadow: 0 0 30px rgba(35, 192, 210, 0.2);
-    backdrop-filter: blur(5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.85), inset 0 0 30px rgba(0, 0, 0, 0.6);
+    position: relative;
 }
 
 .main-logo {
-    width: 140px;
-    filter: drop-shadow(0 0 10px var(--ri-cyan));
-    animation: pulseLogo 4s infinite ease-in-out;
+    width: 145px;
+    filter: drop-shadow(0 0 12px rgba(212, 175, 55, 0.35));
+    animation: pulseCrest 5s infinite ease-in-out;
 }
 
-.login-text-content { text-align: left; }
-.glitch-text { margin: 0 0 10px 0; letter-spacing: 5px; }
+.login-text-content {
+    text-align: left;
+}
 
-/* Barra de carga */
+.subtitle-crest {
+    display: block;
+    font-family: var(--font-title);
+    font-size: 12px;
+    letter-spacing: 4px;
+    color: var(--ald-gold);
+    margin-bottom: 5px;
+}
+
+.royal-title {
+    margin: 0 0 10px 0;
+    font-family: var(--font-title);
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: var(--ald-parchment);
+    text-shadow: 2px 2px 4px #000;
+}
+
+/* Barra de carga estilo filigrana */
 .progress-bar {
-    width: 250px;
-    height: 4px;
-    background: #333;
+    width: 260px;
+    height: 6px;
+    background: #0d0a08;
+    border: 1px solid var(--ald-border);
     margin: 20px 0;
-    position: relative;
+    padding: 1px;
 }
+
 .progress-fill {
     height: 100%;
-    background: var(--ri-cyan);
+    background: linear-gradient(90deg, var(--ald-crimson), var(--ald-gold));
     width: 0%;
     animation: loadBar 2s forwards;
 }
 
-/* Botón Login */
-button {
-    padding: 12px 30px;
-    background: var(--ri-cyan);
-    border: none;
-    font-weight: bold;
+/* Botón Medieval */
+.btn-medieval {
+    padding: 12px 28px;
+    background: linear-gradient(180deg, #8c2323 0%, #5c1313 100%);
+    color: var(--ald-parchment);
+    border: 1px solid var(--ald-gold);
+    font-family: var(--font-title);
+    font-weight: 700;
+    font-size: 13px;
     cursor: pointer;
-    clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
-    transition: 0.3s;
+    transition: all 0.3s ease;
     text-transform: uppercase;
     letter-spacing: 2px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
 }
-button:hover { background: white; color: black; }
 
-/* Esquinas Decorativas */
-.ui-corner {
-    position: absolute; width: 30px; height: 30px;
-    border: 2px solid var(--ri-cyan); opacity: 0.5;
+.btn-medieval:hover {
+    background: var(--ald-gold);
+    color: #120f0c;
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
 }
-.top-left { top: 20px; left: 20px; border-right: none; border-bottom: none; }
-.top-right { top: 20px; right: 20px; border-left: none; border-bottom: none; }
-.bottom-left { bottom: 20px; left: 20px; border-right: none; border-top: none; }
-.bottom-right { bottom: 20px; right: 20px; border-left: none; border-top: none; }
+
+/* Esquinas ornamentales */
+.ui-corner {
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    border: 2px solid var(--ald-gold-dim);
+    opacity: 0.6;
+}
+.top-left { top: 25px; left: 25px; border-right: none; border-bottom: none; }
+.top-right { top: 25px; right: 25px; border-left: none; border-bottom: none; }
+.bottom-left { bottom: 25px; left: 25px; border-right: none; border-top: none; }
+.bottom-right { bottom: 25px; right: 25px; border-left: none; border-top: none; }
 
 
 /* =========================================
-   2. MENÚ PRINCIPAL
+   2. MENÚ PRINCIPAL (ESTANDARTES)
    ========================================= */
 #main-menu {
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: var(--ri-bg);
+    position: relative;
 }
 
-/* Animación de entrada para el contenedor de tarjetas */
+.menu-container {
+    display: flex;
+    gap: 35px;
+    justify-content: center;
+    align-items: center;
+}
+
 .menu-container.animate-in {
     animation: slideUpFade 0.6s ease-out forwards;
 }
 
-/* Efecto individual para las tarjetas (cascada) */
 .menu-card {
+    width: 260px;
+    background: var(--ald-card);
+    border: 1px solid var(--ald-border);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7);
+    cursor: pointer;
+    transition: all 0.35s ease;
+    position: relative;
     opacity: 0;
     transform: translateY(30px);
-    transition: all 0.5s ease-out;
 }
 
+/* Si tu JS no añade .show automáticamente, asegúrate de mantenerlo visible o usar tu script */
 .menu-card.show {
     opacity: 1;
     transform: translateY(0);
 }
 
-@keyframes slideUpFade {
-    from {
-        opacity: 0;
-        transform: scale(0.95) translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1) translateY(0);
-    }
-}
-
-.menu-container { display: flex; gap: 20px; }
-
-.menu-card {
-    width: 220px;
-    background: var(--ri-card);
-    border: 1px solid #333;
-    cursor: pointer;
+.menu-card::after {
+    content: '';
+    position: absolute;
+    inset: 4px;
+    border: 1px solid rgba(212, 175, 55, 0.15);
+    pointer-events: none;
     transition: 0.3s;
-    position: relative;
 }
-.menu-card:hover:not(.disabled) {
-    border-color: var(--ri-cyan);
-    transform: translateY(-10px);
-}
-.menu-card.disabled { opacity: 0.4; pointer-events: none; filter: grayscale(1); }
 
-.menu-img-placeholder { height: 300px; overflow: hidden; background: #000; }
-.menu-img-placeholder img { width: 100%; height: 100%; object-fit: contain; transition: 0.5s; }
-.menu-card:hover img { transform: scale(1.1); }
+.menu-card:hover:not(.disabled) {
+    border-color: var(--ald-gold);
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(212, 175, 55, 0.15);
+}
+
+.menu-card:hover:not(.disabled)::after {
+    border-color: rgba(212, 175, 55, 0.5);
+}
+
+.menu-card.disabled {
+    opacity: 0.45;
+    pointer-events: none;
+    filter: sepia(40%) grayscale(60%);
+}
+
+.menu-img-placeholder {
+    height: 300px;
+    overflow: hidden;
+    background: #0d0a08;
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu-img-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.5s ease;
+}
+
+.menu-card:hover:not(.disabled) img {
+    transform: scale(1.08);
+}
 
 .menu-text {
-    padding: 15px; text-align: center;
-    font-family: var(--font-mono); font-weight: bold;
-    background: #151515; border-top: 2px solid #333;
+    padding: 18px 15px;
+    text-align: center;
+    font-family: var(--font-title);
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 2px;
+    color: var(--ald-gold);
+    background: #14100d;
+    border-top: 2px solid var(--ald-border);
 }
 
-
-/* =========================================
-   3. PANTALLA DE OPERADORES
-   ========================================= */
-#operator-screen {
-    min-height: 100vh;
-    padding: 30px 50px;
-    background: var(--ri-bg);
-}
-
-.header-system {
-    display: flex; justify-content: space-between; align-items: center;
-    border-bottom: 1px solid #333; padding-bottom: 15px; margin-bottom: 20px;
-    font-family: var(--font-mono); color: var(--ri-cyan);
-}
-.nav-arrow { cursor: pointer; font-weight: bold; opacity: 0.7; }
-.nav-arrow:hover { opacity: 1; text-shadow: 0 0 5px var(--ri-cyan); }
-
-/* CONTENEDOR DE SCROLL HORIZONTAL */
-.scroll-container { position: relative; width: 100%; display: flex; align-items: center; }
-
-.operator-grid {
-    display: grid;
-    grid-template-rows: repeat(2, 380px); /* 2 filas fijas */
-    grid-auto-flow: column; /* Crecer hacia la derecha */
-    grid-auto-columns: 220px; /* Ancho de tarjeta */
-    gap: 20px;
-    overflow-x: auto;
-    width: 100%;
-    padding-bottom: 20px;
-    
-    /* Scrollbar Fina */
-    scrollbar-width: thin;
-    scrollbar-color: var(--ri-cyan) #111;
-}
-
-/* Tarjetas individuales */
-.op-card {
-    background: #151515; border: 1px solid #333;
-    position: relative; overflow: hidden; cursor: pointer;
-    transition: 0.3s;
-}
-.op-card:hover { border-color: var(--ri-cyan); transform: translateY(-5px); }
-
-.op-img-container { height: 280px; position: relative; background: #000; }
-.op-portrait { width: 100%; height: 100%; object-fit: cover; object-position: top; }
-.op-class-icon { position: absolute; top: 10px; left: 10px; width: 35px; z-index: 2; filter: drop-shadow(0 0 3px black); }
-.op-rarity { position: absolute; bottom: 5px; right: 5px; color: var(--ri-gold); font-size: 14px; text-shadow: 1px 1px 2px black;}
-
-.op-info { padding: 10px; background: #111; border-top: 2px solid #333; }
-.op-card:hover .op-info { border-top-color: var(--ri-cyan); }
-.op-name { font-weight: bold; font-size: 14px; text-transform: uppercase; }
-.op-status { font-size: 10px; color: var(--ri-cyan); font-family: var(--font-mono); }
-
-/* Botones laterales */
-.scroll-btn {
-    position: absolute; z-index: 10;
-    background: rgba(0,0,0,0.8); color: var(--ri-cyan);
-    border: 1px solid var(--ri-cyan); font-size: 24px;
-    height: 60px; width: 40px; cursor: pointer;
-}
-.scroll-btn.left { left: -20px; }
-.scroll-btn.right { right: -20px; }
-
-
-/* =========================================
-   4. MODAL / FICHA DE PERSONAJE (CORREGIDO)
-   ========================================= */
-.modal-overlay {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.92); /* Fondo muy oscuro */
-    z-index: 2000;
-    display: flex; justify-content: center; align-items: center;
-    opacity: 0; pointer-events: none; transition: 0.3s;
-    backdrop-filter: blur(5px);
-}
-.modal-overlay.active { opacity: 1; pointer-events: all; }
-
-/* El logo de fondo arreglado */
-.modal-bg-logo {
-    position: absolute; width: 600px;
-    opacity: 0.04; /* Casi invisible */
-    z-index: -1; pointer-events: none;
-}
-
-.modal-content {
-    display: flex; width: 95%; max-width: 1100px; height: 85vh;
-    background: #0f0f0f; border: 1px solid #333;
-    box-shadow: 0 0 50px black; position: relative;
-    overflow: hidden; /* IMPORTANTE: Evita desbordes */
-}
-
-/* Lado Izquierdo: Foto */
-.modal-left {
-    flex: 1.3; position: relative;
-    background: radial-gradient(circle, #1a1a1a 0%, #000 100%);
-    overflow: hidden;
-}
-.modal-art {
-    width: 100%; height: 100%;
-    object-fit: cover; object-position: top center;
-    mask-image: linear-gradient(to right, black 85%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to right, black 85%, transparent 100%);
-}
-.modal-class-container {
-    position: absolute; top: 25px; left: 25px;
-    display: flex; gap: 10px; align-items: center; z-index: 5;
-}
-.modal-class-container img { width: 45px }
-#modal-class-text { font-family: var(--font-mono); font-size: 20px; font-weight: bold }
-
-/* Lado Derecho: Datos */
-.modal-right {
-    flex: 1; padding: 40px;
-    background: #0a0a0a; border-left: 1px solid #222;
-    display: flex; flex-direction: column;
-    overflow-y: auto; /* Scroll solo aquí */
-    
-    scrollbar-width: thin; scrollbar-color: var(--ri-cyan) #000;
-}
-
-.file-header { border-bottom: 2px solid var(--ri-cyan); padding-bottom: 10px; margin-bottom: 25px; }
-.file-header h1 { font-size: 48px; margin: 0; line-height: 1; text-transform: uppercase; color: white; }
-.modal-stars { color: var(--ri-gold); font-size: 22px; margin-top: 5px; letter-spacing: 3px; }
-
-.file-body { font-family: var(--font-mono); font-size: 13px; color: #aaa; }
-
-.data-row {
-    display: flex; justify-content: space-between;
-    padding: 10px 0; border-bottom: 1px solid #1c1c1c;
-}
-.label { color: #555; font-weight: bold; }
-.value { color: var(--ri-cyan); font-weight: bold; text-align: right; }
-
-.separator-line { height: 2px; width: 40px; background: var(--ri-cyan); margin: 30px 0; }
-.data-bio { line-height: 1.8; }
-.bio-text span { color: var(--ri-cyan); margin-left: 5px; }
-.flavor-text { margin-top: 20px; padding: 15px; background: #111; border-left: 3px solid #333; font-style: italic; color: #666; font-size: 12px; }
-
-.close-modal {
-    position: absolute; top: 15px; right: 20px;
-    background: none; border: none; font-size: 40px; color: #444;
-    cursor: pointer; line-height: 0.5; z-index: 100;
-}
-.close-modal:hover { color: white; }
-
-
-/* =========================================
-   5. RESPONSIVE (MÓVIL) - ADAPTACIÓN TOTAL
-   ========================================= */
-@media (max-width: 768px) {
-    /* --- 1. LOGIN --- */
-    .login-card { 
-        flex-direction: column; 
-        width: 85%; 
-        padding: 25px; 
-        gap: 20px; 
-        text-align: center; 
-    }
-    .main-logo { width: 100px; }
-    .progress-bar { width: 100%; max-width: 250px; margin: 15px auto; }
-    .glitch-text { font-size: 18px; letter-spacing: 3px; }
-    .ui-corner { width: 15px; height: 15px; }
-    
-    /* --- 2. MENÚ PRINCIPAL --- */
-    #main-menu { height: auto; min-height: 100vh; padding: 80px 0 40px 0; }
-    .menu-container { flex-direction: column; width: 100%; align-items: center; gap: 25px; }
-    .menu-card { width: 85%; max-width: 320px; }
-    .menu-img-placeholder { height: 200px; }
-    
-    /* --- 3. OPERADORES --- */
-    #operator-screen { padding: 60px 15px 20px 15px; } /* Más espacio arriba para la flecha de volver */
-    .header-system { flex-direction: column; gap: 10px; align-items: flex-start; }
-    .scroll-btn { display: none; } /* Ocultar flechas en móvil, se usa el scroll táctil */
-    
-    .operator-grid {
-        grid-template-rows: auto; /* 1 sola fila en móvil para facilitar scroll lateral */
-        grid-auto-columns: 150px; /* Tarjetas ligeramente más estrechas */
-        gap: 15px;
-        padding-bottom: 15px;
-    }
-    .op-img-container { height: 200px; }
-    
-    /* --- 4. MODAL / FICHA DE PERSONAJE --- */
-    .modal-content { 
-        flex-direction: column; 
-        height: 100vh; 
-        width: 100%; 
-        max-width: 100%;
-        border: none; 
-        border-radius: 0;
-        overflow-y: auto; /* Scroll a toda la ventana en móvil */
-    }
-    .modal-left { 
-        flex: none; 
-        height: 350px; /* Altura fija para la imagen en móvil */
-        width: 100%; 
-    }
-    .modal-art { 
-        /* Cambiamos la máscara para que se difumine hacia abajo en vez de hacia la derecha */
-        mask-image: linear-gradient(to bottom, black 60%, transparent 100%); 
-        -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
-        object-position: center top; 
-    }
-    .modal-right { 
-        flex: none; 
-        padding: 20px; 
-        border-left: none; 
-        overflow-y: visible; /* El scroll lo hace el contenedor padre ahora */
-        margin-top: -50px; /* Sube el texto para solaparse con el degradado de la imagen */
-        z-index: 10;
-    }
-    .file-header h1 { font-size: 32px; }
-    
-    /* Ajuste del botón cerrar para que sea fácil de tocar en móvil */
-    .close-modal { 
-        top: 15px; 
-        right: 15px; 
-        font-size: 30px; 
-        background: rgba(0,0,0,0.6); 
-        width: 40px; 
-        height: 40px; 
-        display: flex; justify-content: center; align-items: center;
-        border-radius: 50%;
-        color: white;
-    }
-    
-    /* --- 5. MENÚ HISTORIA (DATABASE) --- */
-    .history-grid { 
-        padding: 60px 15px 30px 15px; 
-        gap: 20px; 
-        grid-template-columns: 1fr; /* 1 sola columna ocupando el 100% */
-    }
-    .history-card { padding: 20px; }
-    .history-card h3 { font-size: 20px; }
-    
-    /* --- 6. PANTALLA DE LECTURA (LORE) --- */
-    #razas-screen { padding: 60px 15px 30px 15px; }
-    .reader-container { padding: 25px 20px; }
-    .reader-header h1 { font-size: 24px; }
-    .reader-body { font-size: 15px; line-height: 1.6; }
-    .lore-entry h2 { font-size: 16px; margin-top: 25px; }
-    
-    /* --- 7. GRID DE RAZAS --- */
-    .race-grid { 
-        grid-template-columns: 1fr; /* Una tarjeta por fila en móvil */
-        gap: 20px; 
-    }
-    .race-img-box { height: 200px; } /* Imagen un poco más grande para compensar el ancho completo */
-    
-    /* --- 8. FLECHAS FLOTANTES DE NAVEGACIÓN --- */
-    .nav-arrow-fixed {
-        top: 15px;
-        left: 15px;
-        font-size: 12px;
-        background: rgba(10, 10, 10, 0.8); /* Fondo oscuro para que se lea sobre cualquier imagen */
-        padding: 8px 12px;
-        border-radius: 5px;
-        border: 1px solid #333;
-    }
-}
-
-/* Animaciones */
-@keyframes loadBar { 0% { width: 0%; } 100% { width: 100%; } }
-@keyframes pulseLogo { 0%, 100% { transform: scale(1); filter: brightness(1); } 50% { transform: scale(1.05); filter: brightness(1.2); } }
-@keyframes slideUp { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-
-
-/* Logo de la Facción en la foto (cuando ves info completa)*/
-.faction-watermark {
-    position: absolute;
-    top: 30px;
-    right: 30px; /* Lo coloca a la derecha */
-    width: 100px; /* Tamaño del logo */
-    opacity: 0.8; /* Un poco transparente */
-    z-index: 10;
-    filter: drop-shadow(0 0 5px rgba(0,0,0,0.8)); /* Sombra para que se vea sobre fondos claros */
-    transition: all 0.5s ease;
-}
-
-/* Efecto al pasar el ratón (opcional) */
-.faction-watermark:hover {
-    opacity: 1;
-    transform: scale(1.1);
-}
-
-
-/* Icono de Facción (Arriba Derecha en la tarjeta pequeña) */
-.op-faction-icon {
-    position: absolute;
-    top: 8px;      /* Un poco separado del borde superior */
-    right: 8px;    /* Un poco separado del borde derecho */
-    width: 32px;   /* Tamaño pequeño y discreto */
-    height: auto;
-    z-index: 10;   /* Asegura que quede por encima de la foto del personaje */
-    opacity: 0.85; /* Ligeramente transparente para integrarse mejor */
-    filter: drop-shadow(0 1px 3px rgba(0,0,0,0.8)); /* Sombra para que se distinga en fondos claros */
-}
-
-/* Opcional: Un pequeño brillo al pasar el ratón por la tarjeta */
-.op-card:hover .op-faction-icon {
-    opacity: 1;
-    filter: drop-shadow(0 0 5px var(--ri-cyan));
-}
-
-
-
-
-/* --- FLECHA FLOTANTE DEL MENÚ  (para volver atras)--- */
+/* Flecha flotante para volver atrás */
 .nav-arrow-fixed {
-    position: absolute; /* Flota sobre el contenido */
-    top: 40px;
+    position: absolute;
+    top: 35px;
     left: 40px;
     cursor: pointer;
-    font-family: var(--font-mono);
-    color: var(--ri-cyan);
-    font-weight: bold;
+    font-family: var(--font-title);
+    color: var(--ald-gold);
+    font-weight: 700;
     letter-spacing: 2px;
-    font-size: 14px;
-    opacity: 0.6;
+    font-size: 13px;
+    opacity: 0.75;
     z-index: 100;
     display: flex;
     align-items: center;
@@ -483,30 +254,19 @@ button:hover { background: white; color: black; }
 }
 
 .nav-arrow-fixed span {
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .nav-arrow-fixed:hover {
     opacity: 1;
-    color: white;
-    text-shadow: 0 0 8px var(--ri-cyan);
-    transform: translateX(-5px);
+    color: var(--ald-parchment);
+    text-shadow: 0 0 8px rgba(212, 175, 55, 0.6);
+    transform: translateX(-4px);
 }
-
-/* Ajuste para móvil */
-@media (max-width: 768px) {
-    .nav-arrow-fixed {
-        top: 20px;
-        left: 20px;
-        font-size: 12px;
-    }
-}
-
-
 
 
 /* =========================================
-   6. PANTALLA MENÚ HISTORIA (DATABASE)
+   3. PANTALLA MENÚ HISTORIA (TOMOS Y CRÓNICAS)
    ========================================= */
 .history-grid {
     display: grid;
@@ -518,32 +278,35 @@ button:hover { background: white; color: black; }
 }
 
 .history-card {
-    background: #111;
-    border: 1px solid #333;
+    background: var(--ald-card);
+    border: 1px solid var(--ald-border);
     padding: 30px;
     position: relative;
     cursor: pointer;
     transition: 0.3s;
-    overflow: hidden;
-    /* Corte decorativo en la esquina */
-    clip-path: polygon(0 0, 100% 0, 100% 85%, 90% 100%, 0 100%);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
 }
 
 .history-card::before {
     content: '';
-    position: absolute; top: 0; left: 0; width: 4px; height: 100%;
-    background: #333; transition: 0.3s;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--ald-border);
+    transition: 0.3s;
 }
 
 .history-card:hover:not(.disabled) {
-    background: #1a1a1a;
-    transform: translateX(10px);
-    box-shadow: 0 0 20px rgba(35, 192, 210, 0.1);
-    border-color: var(--ri-cyan);
+    background: #241d17;
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(212, 175, 55, 0.12);
+    border-color: var(--ald-gold);
 }
 
 .history-card:hover:not(.disabled)::before {
-    background: var(--ri-cyan);
+    background: var(--ald-gold);
 }
 
 .history-card.disabled {
@@ -554,106 +317,107 @@ button:hover { background: white; color: black; }
 
 .h-code {
     display: block;
-    font-family: var(--font-mono);
-    color: var(--ri-cyan);
-    font-size: 10px;
-    margin-bottom: 10px;
+    font-family: var(--font-title);
+    color: var(--ald-gold);
+    font-size: 11px;
+    margin-bottom: 8px;
     letter-spacing: 2px;
 }
 
 .history-card h3 {
     margin: 0;
-    font-size: 24px;
-    text-transform: uppercase;
-    color: white;
+    font-family: var(--font-title);
+    font-size: 22px;
+    color: var(--ald-parchment);
 }
 
 .history-card p {
-    color: #888;
-    font-family: var(--font-mono);
-    font-size: 12px;
-    margin-top: 5px;
+    color: var(--ald-text-muted);
+    font-size: 14px;
+    margin-top: 8px;
+    line-height: 1.5;
 }
 
+
 /* =========================================
-    PANTALLA DE LECTURA (PLANTILLA) HISTORIA
+   4. PANTALLA DE LECTURA (PERGAMINO / LORE)
    ========================================= */
 #razas-screen {
-    background: #050505;
     min-height: 100vh;
-    padding: 60px 20px;
+    padding: 70px 20px;
     display: flex;
     justify-content: center;
 }
 
 .reader-container {
-    max-width: 800px;
+    max-width: 850px;
     width: 100%;
-    background: #0f0f0f;
-    border: 1px solid #333;
-    padding: 50px;
-    box-shadow: 0 0 50px black;
+    background: #17130f;
+    border: 1px solid var(--ald-border);
+    padding: 55px;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.9);
     position: relative;
 }
 
-/* Decoración superior */
 .reader-container::before {
     content: '';
-    position: absolute; top: 0; left: 0; width: 100%; height: 4px;
-    background: linear-gradient(90deg, var(--ri-cyan), transparent);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, var(--ald-gold), transparent);
 }
 
 .reader-header h1 {
-    font-size: 36px;
+    font-family: var(--font-title);
+    font-size: 34px;
     margin: 0;
-    color: white;
+    color: var(--ald-gold);
     text-transform: uppercase;
     letter-spacing: 2px;
 }
 
 .reader-meta {
-    font-family: var(--font-mono);
-    color: var(--ri-cyan);
+    font-family: var(--font-title);
+    color: var(--ald-text-muted);
     margin-top: 10px;
     font-size: 12px;
-    border-bottom: 1px solid #333;
+    letter-spacing: 2px;
+    border-bottom: 1px solid var(--ald-border);
     padding-bottom: 20px;
     margin-bottom: 30px;
 }
 
 .reader-body {
-    color: #ccc;
-    line-height: 1.8;
-    font-size: 16px;
+    color: var(--ald-parchment);
+    line-height: 1.85;
+    font-size: 17px;
 }
 
 .lore-entry h2 {
-    color: var(--ri-cyan);
-    font-size: 18px;
-    margin-top: 30px;
-    border-left: 3px solid var(--ri-cyan);
+    font-family: var(--font-title);
+    color: var(--ald-gold);
+    font-size: 20px;
+    margin-top: 35px;
+    border-left: 3px solid var(--ald-crimson);
     padding-left: 15px;
-    background: linear-gradient(90deg, rgba(35,192,210,0.1), transparent);
+    background: linear-gradient(90deg, rgba(122, 28, 28, 0.2), transparent);
 }
 
 .end-log {
     margin-top: 50px;
     text-align: center;
-    font-family: var(--font-mono);
-    color: #444;
-    font-size: 12px;
-    letter-spacing: 5px;
+    font-family: var(--font-title);
+    color: var(--ald-gold-dim);
+    font-size: 13px;
+    letter-spacing: 4px;
 }
 
 
-
-
-
 /* =========================================
-   ESTILOS PARA LAS RAZAS (GRID)
+   5. GRID DE PUEBLOS Y RAZAS DE ALDARIA
    ========================================= */
-
-/* Rejilla responsive: Se adapta a cuántas caben en la pantalla */
 .race-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -661,48 +425,44 @@ button:hover { background: white; color: black; }
     margin-top: 30px;
 }
 
-/* Diseño de la tarjeta individual */
 .race-card {
-    background: #151515;
-    border: 1px solid #333;
+    background: var(--ald-card);
+    border: 1px solid var(--ald-border);
     display: flex;
     flex-direction: column;
     overflow: hidden;
     transition: all 0.3s ease;
     position: relative;
-    height: 100%; /* Para que todas tengan la misma altura visual */
+    height: 100%;
 }
 
-/* Efecto Hover: Se ilumina en Cyan */
 .race-card:hover {
     transform: translateY(-5px);
-    border-color: var(--ri-cyan);
-    box-shadow: 0 5px 15px rgba(35, 192, 210, 0.15);
+    border-color: var(--ald-gold);
+    box-shadow: 0 8px 20px rgba(212, 175, 55, 0.15);
 }
 
-/* Contenedor de la Foto */
 .race-img-box {
     width: 100%;
-    height: 180px; /* Altura fija para la foto */
-    background: #000;
-    border-bottom: 2px solid var(--ri-cyan);
+    height: 190px;
+    background: #0d0a08;
+    border-bottom: 2px solid var(--ald-gold-dim);
     overflow: hidden;
 }
 
 .race-img-box img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Recorta la imagen para llenar el hueco sin deformarse */
+    object-fit: cover;
     transition: 0.5s;
-    filter: grayscale(40%); /* Un poco gris para dar tono serio */
+    filter: sepia(25%);
 }
 
 .race-card:hover .race-img-box img {
-    transform: scale(1.1);
-    filter: grayscale(0%);
+    transform: scale(1.08);
+    filter: sepia(0%);
 }
 
-/* Contenedor de Texto */
 .race-info {
     padding: 20px;
     display: flex;
@@ -711,31 +471,211 @@ button:hover { background: white; color: black; }
 }
 
 .race-name {
-    color: white;
+    font-family: var(--font-title);
+    color: var(--ald-gold);
     font-size: 18px;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    border-left: 3px solid var(--ri-cyan);
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    border-left: 3px solid var(--ald-crimson);
     padding-left: 10px;
 }
 
 .race-desc {
-    color: #999;
-    font-family: var(--font-mono);
-    font-size: 12px;
-    line-height: 1.5;
+    color: var(--ald-text-muted);
+    font-size: 14px;
+    line-height: 1.6;
 }
 
-/* Código decorativo pequeño */
 .race-code {
     position: absolute;
     top: 10px;
     right: 10px;
-    background: rgba(0,0,0,0.7);
-    color: var(--ri-cyan);
-    font-size: 9px;
-    padding: 2px 5px;
-    font-family: var(--font-mono);
+    background: rgba(18, 15, 12, 0.85);
+    border: 1px solid var(--ald-gold-dim);
+    color: var(--ald-gold);
+    font-family: var(--font-title);
+    font-size: 10px;
+    padding: 3px 7px;
     z-index: 2;
+}
+
+
+/* =========================================
+   6. ANIMACIONES
+   ========================================= */
+@keyframes loadBar {
+    0% { width: 0%; }
+    100% { width: 100%; }
+}
+
+@keyframes pulseCrest {
+    0%, 100% { transform: scale(1); filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.3)); }
+    50% { transform: scale(1.04); filter: drop-shadow(0 0 18px rgba(212, 175, 55, 0.6)); }
+}
+
+@keyframes slideUpFade {
+    from { opacity: 0; transform: scale(0.96) translateY(20px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+
+/* =========================================
+   7. ADAPTACIÓN MÓVIL (RESPONSIVE)
+   ========================================= */
+@media (max-width: 768px) {
+    .login-card {
+        flex-direction: column;
+        width: 88%;
+        padding: 30px 20px;
+        gap: 20px;
+        text-align: center;
+    }
+    .login-text-content { text-align: center; }
+    .main-logo { width: 110px; }
+    .progress-bar { width: 100%; max-width: 240px; margin: 15px auto; }
+    .royal-title { font-size: 22px; }
+    .ui-corner { width: 18px; height: 18px; }
+
+    #main-menu { padding: 80px 0 40px 0; }
+    .menu-container { flex-direction: column; width: 100%; gap: 25px; }
+    .menu-card { width: 85%; max-width: 300px; }
+    .menu-img-placeholder { height: 220px; }
+
+    .nav-arrow-fixed {
+        top: 15px;
+        left: 15px;
+        font-size: 11px;
+        background: rgba(18, 15, 12, 0.9);
+        padding: 8px 12px;
+        border: 1px solid var(--ald-border);
+    }
+
+    .history-grid { padding: 65px 15px 30px 15px; grid-template-columns: 1fr; }
+    #razas-screen { padding: 65px 15px 30px 15px; }
+    .reader-container { padding: 25px 20px; }
+    .reader-header h1 { font-size: 24px; }
+    .race-grid { grid-template-columns: 1fr; }
+}
+
+/* =========================================
+   8. ESTILOS ESPECÍFICOS DE CRÓNICAS / LORE
+   ========================================= */
+#historia-screen {
+    min-height: 100vh;
+    padding: 85px 20px 60px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.reader-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.lore-entry {
+    margin-bottom: 45px;
+}
+
+.ornament-divider {
+    text-align: center;
+    color: var(--ald-gold);
+    font-size: 18px;
+    letter-spacing: 6px;
+    margin: 35px 0 10px 0;
+    opacity: 0.85;
+}
+
+.lore-entry h2 {
+    text-align: center;
+    border-left: none;
+    background: none;
+    padding-left: 0;
+    margin-top: 0;
+    margin-bottom: 4px;
+    font-size: 24px;
+    letter-spacing: 3px;
+}
+
+.lore-date {
+    display: block;
+    text-align: center;
+    font-family: var(--font-body);
+    font-style: italic;
+    color: var(--ald-gold-dim);
+    font-size: 15px;
+    margin-bottom: 25px;
+}
+
+.lore-entry p {
+    margin-bottom: 18px;
+    text-align: justify;
+}
+
+.royal-quote {
+    margin: 30px 0;
+    padding: 20px 25px;
+    background: rgba(122, 28, 28, 0.15);
+    border-left: 3px solid var(--ald-gold);
+    border-right: 1px solid var(--ald-border);
+    font-style: italic;
+    color: var(--ald-gold);
+    font-size: 17px;
+    line-height: 1.7;
+    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.4);
+}
+
+/* Desplazamiento suave al pulsar un capítulo del índice */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Índice de capítulos */
+.lore-toc {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 35px;
+    padding: 15px;
+    background: rgba(13, 10, 8, 0.75);
+    border: 1px solid var(--ald-border);
+}
+
+.lore-toc a {
+    font-family: var(--font-title);
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: var(--ald-text-muted);
+    text-decoration: none;
+    padding: 5px 10px;
+    border: 1px solid transparent;
+    transition: all 0.25s ease;
+}
+
+.lore-toc a:hover {
+    color: var(--ald-gold);
+    border-color: var(--ald-gold-dim);
+    background: rgba(212, 175, 55, 0.08);
+}
+
+/* Frase de apertura */
+.lore-prologue {
+    text-align: center;
+    font-style: italic;
+    font-size: 19px;
+    color: var(--ald-gold);
+    padding: 15px 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--ald-border);
+}
+
+.lore-prologue strong {
+    font-family: var(--font-title);
+    font-style: normal;
+    letter-spacing: 1px;
+}
+
+.lore-entry {
+    scroll-margin-top: 40px;
 }

@@ -3,333 +3,181 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rhodes Island // ARCHIVES</title>
+    <link rel="icon" type="image/x-icon" href="../../Aldaria.ico">
+    <title>Lore de Aldaria | Archivos Reales</title>
+    
+    <!-- Fuentes Medievales -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Enlace al CSS principal -->
     <link rel="stylesheet" href="../../estilos.css">
 </head>
+
 <body>
+    <audio id="sound-click" src="../../click.mp3" preload="auto"></audio>
 
-    <div class="scanlines"></div>
-    <div class="particles"></div>
+    <!-- Botón para volver al menú principal -->
+    <a href="../../index.html" class="nav-arrow-fixed" style="text-decoration: none;">
+        <span>◄</span> VOLVER AL MENÚ
+    </a>
 
-    <section id="history-menu-screen" style="display: block;"> <div class="header-system">
-            <a href="../../index.html" class="nav-arrow" style="text-decoration: none; color: inherit;">
-                <span>◄</span> RETURN_TO_MAIN
-            </a>
-            <div class="header-title">
-                <span>ARCHIVE // RHODES_ISLAND_RECORDS</span>
-            </div>
-        </div>
-
-        <div class="history-grid">
+    <!-- Contenedor principal de lectura -->
+    <section id="historia-screen">
+        <article class="reader-container">
             
-            <div class="history-card disabled">
-                <span class="h-code">REC_01</span>
-                <h3>MAPA Y PAÍSES</h3>
-                <p>// Geopolítica de Terra</p>
-            </div>
-
-            <div class="history-card" id="btn-open-razas">
-                <span class="h-code">REC_02</span>
-                <h3>RAZAS DE TERRA</h3>
-                <p>// Análisis biológico y rasgos</p>
-            </div>
-
-            <div class="history-card disabled">
-                <span class="h-code">REC_03</span>
-                <h3>ORIPATÍA</h3>
-                <p>// Origen y patología</p>
-            </div>
-
-            <div class="history-card disabled">
-                <span class="h-code">REC_04</span>
-                <h3>ARTES</h3>
-                <p>// Clasificación de Artes</p>
-            </div>
-
-            <div class="history-card disabled">
-                <span class="h-code">REC_05</span>
-                <h3>LINEA DE TIEMPO</h3>
-                <p>// Historia de Terra</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="razas-screen" style="display: none; opacity: 0;">
-        
-        <div class="nav-arrow-fixed" id="btn-back-razas-menu" style="top: 20px; left: 20px; cursor: pointer;">
-            <span>◄</span> BACK_TO_ARCHIVES
-        </div>
-
-<div class="reader-container" style="max-width: 1200px;"> <div class="reader-header">
-        <h1>REGISTRO DE RAZAS</h1>
-        <div class="reader-meta">DATABASE ACCESS // TOTAL ENTRIES: 30+</div>
-    </div>
-
-    <div class="race-grid" id="race-grid-container">
-        </div>
-
-    <div class="end-log">// END OF ARCHIVE</div>
-</div>
-    </section>
-
-
-
-<div id="race-modal" class="modal-overlay">
-    <div class="modal-content">
-        <button class="close-modal" id="closeRaceModal">×</button>
-        
-        <div class="modal-left">
-            <img id="modal-race-img" src="" class="modal-art" alt="Race Image">
-        </div>
-
-        <div class="modal-right">
-            <div class="file-header">
-                <h1 id="modal-race-name">NOMBRE RAZA</h1>
-                <div class="modal-stars" style="color: var(--ri-cyan); font-size: 12px; letter-spacing: 2px; margin-top: 10px;">
-                    BIOLOGICAL ENTRY
+            <!-- Cabecera del Tomo -->
+            <header class="reader-header">
+                <span class="subtitle-crest">ARCHIVOS REALES • CRÓNICA COMPLETA</span>
+                <h1>LORE DE ALDARIA</h1>
+                <div class="reader-meta">
+                    <span>ERA DE LOS ORÍGENES — AÑO 900</span>
+                    <span>•</span>
+                    <span>ESCRIBAS DE LA CORONA</span>
                 </div>
-            </div>
 
-            <div class="file-body">
-                <div class="separator-line"></div>
-                <p id="modal-race-desc" style="font-size: 16px; line-height: 1.8; color: #ccc;">
-                    Descripción aquí...
+                <!-- Índice de navegación rápida -->
+                <nav class="lore-toc">
+                    <a href="#principio">I. El Principio</a>
+                    <a href="#primeros-pueblos">II. Primeros Pueblos</a>
+                    <a href="#primera-guerra">III. Primera Gran Guerra</a>
+                    <a href="#imperio">IV. El Imperio</a>
+                    <a href="#ruptura-arcana">V. Ruptura Arcana</a>
+                    <a href="#guerras-sangre">VI. Cuarenta Años de Sangre</a>
+                    <a href="#reino-aldaria">VII. Reino de Aldaria</a>
+                    <a href="#era-actual">VIII. La Era Actual</a>
+                </nav>
+            </header>
+
+            <!-- Cuerpo del Pergamino -->
+            <div class="reader-body">
+
+                <!-- PRÓLOGO -->
+                <p class="lore-prologue">
+                    Antes de los reinos y las guerras, solo existían dos nombres: <strong>Nahara</strong> y <strong>Alren</strong>.
                 </p>
-            </div>
-            
-            <div class="modal-footer" style="margin-top: auto; font-size: 10px; color: #333; text-align: right;">
-                RHODES ISLAND // ARCHIVES DEPT.
-            </div>
-        </div>
-    </div>
-</div>
 
+                <!-- 1. EL PRINCIPIO -->
+                <div class="lore-entry" id="principio">
+                    <div class="ornament-divider">༺ ✦ ༻</div>
+                    <h2>EL PRINCIPIO</h2>
+                    <span class="lore-date">Era de los Orígenes · Anterior al año 0</span>
 
-
- <script>
-    // 1. REFERENCIAS A LOS ELEMENTOS
-    const menuScreen = document.getElementById('history-menu-screen');
-    const razasScreen = document.getElementById('razas-screen');
-    const btnOpenRazas = document.getElementById('btn-open-razas');
-    const btnBackRazas = document.getElementById('btn-back-razas-menu');
-    
-    // Referencias del Modal
-    const raceModal = document.getElementById('race-modal');
-    const closeRaceBtn = document.getElementById('closeRaceModal');
-    const modalImg = document.getElementById('modal-race-img');
-    const modalName = document.getElementById('modal-race-name');
-    const modalDesc = document.getElementById('modal-race-desc');
-
-    // 2. BASE DE DATOS DE RAZAS
-    const racesData = [
-        {
-            nombre: "LUPO",
-            desc: "Los lupos tienen orejas puntiagudas y colas tupidas, y son una de las tres razas separadas de los perros debido a diferencias culturales y biológicas, junto con los Vulpos y los Reprobas. En apariencia, parecen casi idénticos a un Perro, pero también son los más fáciles de reconocer debido a su cultura única, además de tener un pelaje generalmente áspero y duro en comparación. \n\n Según su leyenda y la investigación antropológica, su fuerte pero retorcido sentido de la familia y su exclusivismo son consecuencia de la influencia directa de los Señores Bestia lupinos, los 'Signori dei Lupi', quienes eligieron a sus 'Colmillos' como sus representantes en su interminable batalla campal. Los hombres bestia de los Signori, los 'Lobos', habían estado atacando constantemente a los antiguos Lupos, obligándolos a organizarse en un estricto orden familiar. \n\n Los Lupos se pueden encontrar en muchas naciones Terra. Siracusa tiene como patria la población predominante de Lupo, y el este de Leithanien tiene la segunda población más grande debido a la historia compartida con Siracusa antes de su independencia en el año Terrano 979. Victoria y Ursus también tienen un cierto número de Lupos",
-            foto: "../razas/lupo.png" 
-        },
-        {
-            nombre: "FELINE",
-            desc: "Los Feline tienen orejas puntiagudas y triangulares, y colas largas, y algunos tienen orejas redondeadas o dobladas, y colas cortas. Su agudo sentido les ha ganado la reputación de ser sigilosos merodeadores o individuos flexibles. Algunos incluso poseen pupilas fotosensibles, por lo que sus ojos forman 'pupilas rasgadas' en zonas con luz brillante. \n\n Junto con los Perros y los Liberi, los Feline son la raza terrestre predominante, presente en casi todas las naciones terrestres gracias a su fuerte adaptación al entorno. De hecho, hay un proverbio Gaul popular sobre los felinos: 'Donde las huellas llevan, allí se encuentran los felinos'. Tienen diversos grupos étnicos, y el subgrupo felino más predominante es quizás el de los Aslan de Sargon y Victoria. \n\n Actualmente, Victoria alberga la mayor parte de la población felina, y muchos de ellos son descendientes de los leales que siguieron a la casa Aslan en Sargón durante el siglo IX terrestre, quienes se casaron con lugareños de diferentes razas durante el reinado de los dracos. Por lo tanto, ha sido común que un felino victoriano tenga un pariente lejano en Sargon",
-            foto: "../razas/feline.png" 
-        },
-        {
-            nombre: "CAUTUS",
-            desc: "Los Cautus tienen orejas largas, colas cortas y esponjosas, y una estatura promedio baja. Sus orejas les otorgan un agudo sentido del oído que complementa su frágil cuerpo. Gracias a estas características, junto con su alta fertilidad, los cautuses tienen una población muy numerosa \n\n Aunque los Cautus son una raza común en toda Terra, Rim Billiton alberga una población predominante de cautuses como nativos. Los Cautus de Rim Billiton viven un estilo de vida colectivo como comunidad, y trabajan juntos para construir sus escondites subterráneos, apodados la 'madriguera del conejo', donde se asientan, cultivan zanahorias y tubérculos resistentes a la sequía como cultivos básicos, y realizan minería en las vetas de Originium. \n\n Tratan a sus familiares como un núcleo esencial; incluso cuando alguien decide viajar al exterior para establecerse por su cuenta, sus familiares le brindarán continuamente su apoyo, ya sea material o emocional. Dentro de la comunidad, la familia con el mayor número de miembros es considerada el líder principal. La sólida relación familiar de los Cautus es la base de la cultura familiar rimbillitoniana y su gobierno autónomo de base.",
-            foto: "../razas/cautus.png" 
-        },   
-        {
-            nombre: "URSUS",
-            desc: "Los Ursus tienen orejas redondeadas, colas cortas e imperceptibles, y una estatura más corpulenta que la de otros terranos. Siendo una de las razas terranas más comunes, la gran mayoría de los Ursus habitan en el Imperio Ursus, con poblaciones considerables en países templados del norte como Yan, Kazimierz, Kjerag y Sami; incluso hay una población que vive en los desiertos del norte de Sargón \n\n Las hazañas más distintivas de los Ursus son su gran estatura y su excepcional fuerza física en comparación con otras razas, atributos que generalmente prefieren destacar. También poseen una resistencia muy desarrollada debido al duro entorno en el que viven; por ejemplo, los gélidos inviernos en las regiones del norte. Los Ursus tienen un gran número de subrazas, cada una con diferente color de pelo y pelaje, aunque las más comunes son el negro, el marrón y el blanco \n\n El término 'Ursus' se remonta a la era prehistórica, cuando los primeros humanos comenzaron a referirse a otras razas por sus nombres.",
-            foto: "../razas/ursus.png" 
-        },     
-        {
-            nombre: "KURANTA",
-            desc: "Los Kuranta tienen orejas en forma de embudo y son altos, y sus colas, ya sean tupidas (apodadas 'falda') o simplemente con mechones de pelo largo en la base. Aunque carecen de la fuerza física de los Ursus y los Fortes, los Kuranta poseen una resistencia inquebrantable que les permite correr a altas velocidades con poca o ninguna fatiga \n\n Los Kuranta son una raza terrestre común, y entre todas las naciones, Kazimierz alberga la población predominante de Kuranta. Se cree que la caballería Kazimirziana surgió de las primeras confederaciones nómadas Kuranta que vagaban por las praderas. Para defenderse de los invasores, estos primeros caballeros se organizaron en una sólida defensa militar mediante un entrenamiento militar estricto y rígido que priorizaba la respuesta rápida \n\n La familia también es un concepto fundamental en la cultura Kuranta, donde el orden y la jerarquía se priorizan, ya que los parientes se mantienen unidos a lo largo del tiempo. El jefe de una familia tradicional Kuranta ejerce como caballero principal; en la actual Kazimierz, donde el mercantilismo lo domina todo, se conoce como la 'familia de caballeros', liderada por un 'Caballero Primus'",
-            foto: "../razas/kuranta.png" 
-        },
-        {
-            nombre: "FORTE",
-            desc: "Los Fortes tienen cuernos puntiagudos de queratina, orejas redondeadas y prominentes, colas con mechones de pelo y complexión musculosa. Existen varios subgrupos con orejas pequeñas y redondeadas, capaces de sobrevivir en desiertos áridos. \n\n La falta de flexibilidad de los Fortes se compensa con su excelente fuerza física. Por ello, a menudo se les estereotipa como personas simplemente fuertes físicamente pero sin cerebro, estereotipo que se refuerza aún más con la popular marca de bebidas Forte Energy Drink. Sin embargo, muchos Fortes son conocidos por su sabiduría filosófica, especialmente en los asentamientos donde son la raza predominante. La leyenda dice que los antiguos Fortes podían sumergirse por completo en obras literarias y debates ideológicos, y su estilo de vida contrastaba marcadamente con el de las tribus vecinas Reproba. \n\n Los Fortes son una de las razas más comunes en Terra. Entre todas las naciones, Minos tiene una población predominante de Fortes.",
-            foto: "../razas/forte.png" 
-        },
-        {
-            nombre: "LIBERI",
-            desc: "'Liberi' es un término general que se refiere a cualquier raza antigua o ancestral con plumas en el pelo y estructuras similares a las plumas de la cola en el torso, o rasgos similares a las plumas. Esto hace que algunas razas que biológicamente no son Liberi se clasifiquen como subgrupos Liberi debido a sus plumas. Además de las plumas, también poseen un buen oído y vista. \n\n En general, los Liberi son una raza de tamaño mediano, con las hembras ligeramente más bajas. Su condición física es, en el mejor de los casos, relativamente promedio, y son considerablemente más ligeros que otras razas. \n\n Junto con los Perros y los Feline, los Liberi son una raza predominante en Terra con numerosas ramas antiguas y ancestrales. Los Liberi Ancianos más famosos son los Hipogrifos, la antigua clase gobernante del Imperio Hipogrifo, que posteriormente fue derrocada por los rebeldes de Ursus liderados por Ígor el Grande en el año 31 terrano. Debido a su complejidad y a su enorme población, que da origen a diversas culturas, muchos antropólogos liberianos instan a dividirlos en nuevas razas, pero la oposición argumenta que las diferencias culturales no deben mezclarse con las características biológicas",
-            foto: "../razas/liberi.png" 
-        },
-        {
-            nombre: "SANKTA",
-            desc: "Como raza predominante que fundó y reside en Laterano, los Sankta son humanoides con halos sobre la cabeza y 'alas' luminiscentes de diversas formas y tamaños en la espalda. Sus halos y alas disminuyen al morir, y enfermedades o defectos de nacimiento podrían afectarlos. \n\n Los Sankta poseen varios rasgos únicos de otros terranos, como el uso de armas de fuego y su capacidad empática. De hecho, los Sankta son famosos por su firme fe en la Iglesia Laterana, una religión establecida en la misma, donde siguen los mandamientos de la Ley. Para un Sankta, sus rasgos únicos son las bendiciones de la Ley, y sus halos y alas son símbolos honoríficos de estas bendiciones. \n\n Alguno Sankta son conocidos como Caídos. Los Sankta caídos también siguen sujetos a sus leyes nacionales. Pueden ser desterrados de su tierra natal o sometidos a vigilancia constante por un supervisor. No deben revelar públicamente su estatus dentro de su patria. En el pasado, los Sankta caídos incluso fueron perseguidos como parte de la intención de Laterano de encubrir tal secreto.",
-            foto: "../razas/sankta.png" 
-        },
-        {
-            nombre: "DRACO",
-            desc: "Los Dracos poseen cuernos largos, escamas duras, colas serpentinas, voluminosas y majestuosas, y una fuerza física muy avanzada. Debido a sus similitudes, los Dracos pueden confundirse fácilmente con los Vouivres. \n\n Sin embargo, se distinguen de estos por un rasgo especial: su capacidad para manipular el fuego mediante las Artes Originium, lo que a menudo les otorga el apodo de 'Dragones Rojos'. Si bien las Artes Pirogénicas no son exclusivas de los Dracos, sus poderes suelen tener peculiaridades únicas que los distinguen del fuego común. \n\n Sus habilidades se asemejan más a una forma de manipulación directa de la energía, que abarca desde un control preciso de la energía térmica que puede calentar y quemar materia espontáneamente, como el de Talulah, hasta una manipulación de la energía vital que puede restaurar la vitalidad y sobrecargar el metabolismo celular hasta el punto de combustión, como el de Loughshinny. \n\n En muy raras ocasiones, un Draco de esta última categoría puede nacer con llamas púrpuras que, según se dice, están imbuidas de la muerte misma. Estas llamas llevan su manipulación vital aún más lejos, convirtiéndose en Artes Nigrománticas que pueden 'revivir' a los muertos imbuyéndolos con llamas púrpuras, así como consumir seres vivos y atraparlos en un estado de no-muerte, erosionando gradualmente su cordura. Existen muy pocos registros de Dracos con tales habilidades, incluyendo a Labhréathach, el Rey Exiliado, su hermano Ailill y Eblana. \n\n Los Dracos son una raza ancestral extremadamente rara que se encuentra en numerosas comunidades dispersas por Terra, con diferentes características físicas según la región. Son famosos por ser una prominente casa real que participa activamente en la geopolítica de Terra.",
-            foto: "../razas/draco.png" 
-        },
-        {
-            nombre: "LUNG",
-            desc: "Los Lung tienen cuernos similares a astas y colas escamosas con mechones de pelo. Algunos individuos pueden poseer rasgos más bestiales, como bigotes similares a los de una carpa, pelo similar a la melena de un león, orejas similares a las de un ciervo y aletas y escamas de pez. \n\n Los lung son un grupo étnico único que solo se encuentra en Yan y sus alrededores, como Higashi. Muchos de ellos son miembros imperiales de la dinastía Yan o burgueses de clase alta, es decir, magnates, aristócratas y funcionarios. La historia de Yan está específicamente entrelazada con la dinastía de la casa Lung desde la era tribal de Yan, el Cacique, quien unió a los Cien Clanes de Yan. Los antropólogos incluso creen que los lung son una de las razas más antiguas que sobreviven en Terra, cuyas civilizaciones fueron las primeras en surgir en el este de Terra, si sus relatos históricos son precisos. La dinastía Yan, incluyendo al emperador Yan gobernante, a menudo se autodenomina los Verdaderos Lung, un título honorífico que alude a su respetuosa veneración por sus antepasados ​​y por Yan, el Cacique. Por lo tanto, 'Verdadero' en este caso no es el antónimo de 'falso', sino más bien un honor como verdaderos y genuinos sucesores del respeto ancestral \n\n La casa Lung es conocida por su ferviente pasión por la historia. Para mostrar sus narrativas a las generaciones futuras, suelen contar con archivistas historiadores oficiales cuya función es investigar y redactar registros históricos que posteriormente se almacenan en sus bibliotecas imperiales, supervisadas por el Ministerio de Ritos Yaneses.",
-            foto: "../razas/lung.png" 
-        },
-        {
-            nombre: "ONI",
-            desc: "Los oni se asemejan a sus ancestros Sarkaz al tener uno o dos cuernos en la frente, pero generalmente carecen de cola. Son conocidos por su naturaleza ruda debido a su fuerza corporal, lo que da lugar a diversos estereotipos de guerreros bárbaros y descuidados.Sin embargo, aún tienen poco en común entre sí \n\n  La mayoría de los oni se encuentran en Higashi, quienes desempeñaron un papel importante en su historia. Históricamente, se les daba el título peyorativo de Jinki (人鬼じんき; lit. 'Ogro Humanoide'), quienes asolaron las tierras del lejano oriente desde tiempos inmemoriales mientras 'ondeaban sus cien estandartes como ríos'. Sin embargo, fueron pacificados posteriormente por la diosa higashinense, aunque temían el nombre de la diosa Asayoyoakihime. Sin embargo, según la leyenda, el emperador Kamutaki finalmente subyugó a los clanes Oni tras una década de conquista, pero les mostró misericordia convirtiéndolos en pueblo de Ashihara. \n\n La cultura guerrera de los Oni también les permite tomar el control de gran parte del ejército de Higashi. De hecho, el shogunato de la Corte del Norte tiene su origen en el famoso shogun Oni, Onishoubu Shigekazu, quien derrocó el poder de la realeza con el objetivo de restablecer el orden en el país y estableció el sistema bakufu en el año 400. Sin embargo, su posterior fallecimiento fracturó su shogunato, lo que desencadenó la Guerra Norte-Sur de Higashi. \n\n En la era moderna, los Oni se han integrado desde hace mucho tiempo en la sociedad. Sin embargo, aún prevalecen prejuicios ocultos debido a su pasado histórico como los nefastos Jinki.",
-            foto: "../razas/oni.png" 
-        },
-        {
-            nombre: "SARKAZ",
-            desc: "El término 'Sarkaz' se refiere en realidad a una amplia categoría de razas humanoides distintas de los Antiguos y los Ancianos, siendo los nativos originales de Terra y de los primeros seres inteligentes que caminaron sobre la superficie del planeta. \n\n Antiguamente conocidos como Teekaz, su era terminó con la llegada de los Predecesores, quienes colonizaron el planeta e inadvertidamente introdujeron Originium, junto con los Antiguos y los Ancianos. \n\n Lo que siguió fueron milenios de conflicto entre dos razas biológicamente distintas, lo que finalmente condujo al colapso de la civilización Teekaz y a la dispersión de su gente por Terra en una vasta diáspora. Esta disolución dio origen a cuatro razas que comparten ascendencia común con los Sarkaz: los Sankta, los Anasa, los Oni y los Durins. Los Sarkaz albergan un profundo resentimiento hacia los Sankta en particular; se les considera traidores que traicionaron a los Teekaz y mancillaron un legado antaño glorioso.",
-            foto: "../razas/sarkaz.png" 
-        },
-        {
-            nombre: "AEGIR",
-            desc: "«Aegir» es un término general que abarca diversas razas basadas en el océano de Terra con rasgos distintivos. Algunas pueden poseer características más bestiales (como tentáculos y aletas de pez), mientras que otras son completamente humanoides. La mayoría de los Aegir están bien adaptados al agua, pero no todos pueden vivir plenamente en ella. Respirar bajo el agua es una característica única de la raza Aegir, aunque no todos la poseen. \n\n Sin embargo, una característica común entre los Aegir es su total dependencia del agua para mantener la humedad de su piel, que es mayor que la de los habitantes terrestres promedio. Por otro lado, esto significa que los Aegir son muy susceptibles a la deshidratación. Su sistema respiratorio depende completamente de la humedad del aire, y deben controlar la humedad de su piel al entrar en contacto con el viento y la luz solar para evitar que se seque. Si no se tratan, experimentarán síntomas que van desde reacciones alérgicas, rozaduras y convulsiones, hasta situaciones potencialmente mortales. De hecho, los Aegir terrestres suelen llevar cremas hidratantes especiales y una pequeña botella de agua. En casos extremos, cuando un Aegir debe viajar por regiones áridas como el desierto de Sargonia, lleva equipo de destilación para capturar agua durante la noche, una técnica aprendida de los habitantes del desierto. \n\n Los Aegir son una raza terrestre común que se puede encontrar en entornos acuáticos, desde ríos y lagos hasta costas. Entre todas las naciones terrestres, se sabe que Iberia e Higashi tienen una población significativa de Aegir, conocidos como los 'Isleños'.",
-            foto: "../razas/aegir.png" 
-        },
-        {
-            nombre: "DURIN",
-            desc: "Los Durins tienen un par de orejas puntiagudas y una estatura robusta y baja, estimada en unos 130 cm. Debido a su apariencia, a menudo se les confunde con personas que sufren enanismo debido a una enfermedad genética infantil, y esta perspectiva se ha convertido en un rumor peyorativo lleno de arrogancia racista e ignorancia. \n\n Los Durins tienen culturas únicas. Son bebedores empedernidos que disfrutan del alcohol en grandes cantidades. Por instinto innato, son muy sensibles a los cambios topográficos y geológicos, lo que los convierte en excelentes mineros, geólogos y topógrafos subterráneos. Suelen tener una mentalidad simple y primitiva, pero optimista y abierta, lo que los convierte en una raza pacífica que busca la coexistencia. \n\n Todos los Durins provienen de un mundo subterráneo actualmente inexplorado por los habitantes de la superficie. Cada asentamiento Durin es una ciudad-estado que posee tecnologías mucho más avanzadas que las de los habitantes de la superficie, desde domos gigantes que pueden replicar las temperaturas del mundo de la superficie y autómatas autoconscientes hasta diminutos pero complejos dispositivos de las Artes. Las culturas varían entre las ciudades-estado, pero aun así pueden mantener su interacción. A pesar de sus avances tecnológicos, no les interesa interferir en la geopolítica del mundo de la superficie ni realizar nuevos avances científicos.",
-            foto: "../razas/durin.png" 
-        },
-        {
-            nombre: "ZALAK",
-            desc: "Los zalaks tienen orejas puntiagudas o redondeadas con mechones de pelo, colas delgadas o tupidas, sentidos agudos, estatura media baja y alta fertilidad. Presentan diferentes variaciones según la geografía; por ejemplo, los de la cordillera Kjeragian, que se extiende desde Kazimierz hasta Kjerag, tienen colas gruesas y esponjosas y mechones de pelo espesos en las orejas, mientras que los de las regiones más cálidas del sur tienen pelo más fino en las orejas y la cola. \n\n A pesar de su baja estatura en comparación con otras razas, la agilidad de los zalaks compensa esta desventaja. Sus grandes orejas y su vista aguda les otorgan una audición y unos reflejos excepcionales, y gracias a ello, son muy sensibles a las vibraciones ambientales y a los cambios en las corrientes de aire. Estas cualidades les permiten sobrevivir en entornos hostiles y áridos. De hecho, muchos zalaks suelen trabajar como mensajeros de comunicación o de catástrofes.",
-            foto: "../razas/zalak.png" 
-        },
-        {
-            nombre: "PILOSA",
-            desc: "Aunque parecen completamente humanoides, similares a los Petram, los Pilosa poseen una cola pequeña y un habla y un comportamiento lentos, característicos de ellos, que los hacen literalmente 'lentos como un perezoso'. Por otro lado, esta desventaja se compensa con su carácter taciturno y cauteloso durante el trabajo. \n\n Los Pilosa son una raza muy poco común cuya existencia apenas ha sido documentada. Debido a su comportamiento, se encuentran bastante dispersos por Terra. Su naturaleza bastante tranquila hace que otros los vean como 'excepcionales' hostiles. Además, rara vez aparecen en público y pueden confundirse fácilmente con otras razas. Debido a la escasez de información, muchos asumen que los Pilosa son solo leyendas urbanas. Sin embargo, existen algunos relatos de primera mano que describen su comportamiento, y algunos medios de comunicación populares los representan como caricaturas peculiares.",
-            foto: "../razas/pilosa.png" 
-        },
-        {
-            nombre: "ARCHOSAURIA",
-            desc: "Los arcosaurios tienen colas voluminosas y escamosas, cuerpo escamoso, complexión musculosa y prefieren ambientes húmedos. La mayoría son humanoides con orejas puntiagudas, similares a las de los fidios. Algunos arcosaurios también presentan dimorfismo sexual, en el que los machos pueden poseer rasgos más bestiales que las hembras. \n\n Los arcosaurios son famosos por ser guerreros y cazadores rudos. Sus músculos voluminosos les otorgan fuerza física, y su cultura guerrera los anima a convertirse en luchadores. Además, son excelentes nadadores natos; tienen la capacidad de vadear el agua balanceando sus voluminosas colas. De hecho, un arcosaurio no solo puede luchar con su fuerza muscular, sino que también es un emboscador capaz de ocultarse perfectamente en pantanos y ríos.",
-            foto: "../razas/archosauria.png" 
-        },
-        {
-            nombre: "ELAFIA",
-            desc: "Los elafianos tienen un par de astas, orejas en forma de embudo y colas cortas y redondeadas. Durante la etapa inicial de su crecimiento, sus astas están cubiertas de una piel conocida como terciopelo, en lugar de queratina como en los caprinos y los fuertes. Estas astas de terciopelo poseen cubiertas nerviosas que les permiten percibir el tacto a través de ellas. Un subgrupo especial de elafianos, que habita en el norte de Sargón y el sur de Columbia, se diferencia por su alta estatura, una cola con un mechón de pelo largo y oscuro y un par de osiconos. \n\n Los elafianos valoran mucho sus astas como símbolo de su raza. Muchos elafianos interactúan con sus astas de terciopelo para expresar sus emociones, ya sea alegría o arrogancia. Esto se refleja en el famoso poema 'Hojas viejas y rama nueva', escrito por dos poetas elafianos que debatieron sobre sus temas mediante una lucha de astas, y el resultado del poema muestra el mismo tema con enfoques drásticos. Para otros terranos, las astas de un elafia simbolizan su estrecha interacción con la naturaleza, comparándolas con las ramas de los árboles. Tras un movimiento literario galo de hace décadas, los elafianos han sido estereotipados como personas místicas que viven un estilo de vida aislado y veneran profundamente la naturaleza.",
-            foto: "../razas/elafia.png" 
-        },
-        {
-            nombre: "PERRO",
-            desc: "Los perros tienen orejas puntiagudas, plegadas o caídas, colas puntiagudas o enroscadas y un agudo sentido del olfato. Su pelaje es significativamente más fino y suave que el de un lupo. Los perros son conocidos por expresar sus emociones a través de partes de su cuerpo, como el meneo de la cola y las orejas plegadas. Una cultura destacada entre los perros es su gran familia y su lealtad a sus familias y amigos. En una comunidad tradicional perro, las familias que la conforman se consideran parte de una familia más grande. Debido a su cultura familiar, los perros valoran mucho la paz y la armonía entre familiares y amigos. Incluso ante las dificultades, un perro siempre estará de su lado. \n\n Antes del amanecer de la civilización humana, «perros» era un término general que se refería a sus rasgos caninos compartidos. Tras la conquista aslaniana, que marcó el comienzo de la era de la separación racial, muchos perros se dividieron en tres grupos específicos basados ​​en diferentes culturas y rasgos: lupos, vulpos y reprobas. En consecuencia, a muchas personas les resulta difícil diferenciar entre los perros reales y estos subgrupos separados. Los perros también incluyen varias subrazas antiguas, como los Cerberus, aunque muchas de ellas ya se han integrado en la población perro.",
-            foto: "../razas/perro.png" 
-        },
-        {
-            nombre: "MANTICORE",
-            desc: "Las mantícoras tienen apéndices similares a alas de murciélago a ambos lados de la cabeza y una cola similar a la de un escorpión en el torso, que suele terminar en un aguijón fuerte y a veces venenoso. Su altura suele ser similar a la de un terrícola promedio, aunque las hembras suelen ser más bajas que los machos, aunque ambos sexos demuestran una excelente flexibilidad física.[1] También son prominentes en el uso de artes de camuflaje que les permiten ocultarse durante una emboscada. \n\n Como una raza terrícola poco común, todas las mantícoras viven en regiones remotas de Sargón, lejos de las ciudades nómadas. La mayoría vive aislada del mundo exterior y, debido a sus prácticas culturales, prefieren mantener un perfil bajo, rara vez apareciendo en público y manteniendo la distancia con otras razas. Incluso en la llegada de la Edad de Cristal, las mantícoras simplemente preferían no entrar en las ciudades nómadas y mantener sus vidas sencillas, aunque aisladas",
-            foto: "../razas/manticore.png" 
-        },
-        {
-            nombre: "REPROBA",
-            desc: "Los Reprobas tienen orejas y colas puntiagudas con mechones de pelo, manchas o rayas. Su condición física es moderada en comparación con otras razas, aunque las hembras Reprobas suelen ser más fuertes que los machos. Son una de las tres razas separadas de los Perros debido a diferencias culturales y biológicas, junto con los Lupos y los Vulpos, lo que a menudo resulta en errores de reconocimiento por parte de otras razas. Los Reprobas también incluyen varias subrazas de Antiguos, aunque muchas de ellas ya se han integrado en la población Reproba. \n\n Aunque los Reprobas heredan la cultura familiar numerosa de los Perros, similar a la de los Lupos, existen algunas diferencias. A diferencia de los Perros, se busca valorar la unidad interna y la disciplina. Una familia Reproba tradicional es un matriarcado en el que la matriarca más poderosa lidera la familia, quien es elegida nominalmente por muchas tribus diferentes como su 'guardiana'. A pesar de pasar la mayor parte de su vida en la árida naturaleza, una familia Reproba puede llegar a tener más de cien miembros. Los Reprobas también mantienen una tradición de estrecha interacción con los Sarkaz desde la época tribal, pero esta práctica es muy controvertida entre otros subgrupos Perro debido a su enemistad hacia los Sarkaz. En consecuencia, existe una percepción discriminatoria de los Reprobas, describiéndolos a menudo como similares a los Sarkaz, lo que ha dado lugar a diversas historias de fantasmas que los presentan como protagonistas, aunque a muchos Reprobas no les preocupa la discriminación",
-            foto: "../razas/reproba.png" 
-        },
-        {
-            nombre: "SAVRA",
-            desc: "Los Savra tienen colas escamosas y también pueden tener piel escamosa, cuernos pequeños o púas. Los Savran humanoides tienden a tener orejas puntiagudas, mientras que los Savran bestiales carecen de ellas. Su agilidad y su aguda vista los convierten en cazadores y emboscadores natos.[2] Algunos Savran también poseen la habilidad innata de camuflarse cambiando el color de su piel y pueden mimetizarse con el entorno si visten la vestimenta adecuada. Algunos incluso dominan artes específicas para aumentar aún más su camuflaje, adaptándose perfectamente a su entorno, volviéndose invisibles. \n\n Una característica notable de los Savran es su larga esperanza de vida, que puede superar fácilmente los 140 años, una edad poco común entre la mayoría de los Terran. El actual poseedor del récord de longevidad en Terra es Ibn Erhan, un Padishah Sargoniano Savran que vivió 230 años, afirmando que el secreto de su longevidad residía simplemente en dormir la mitad del día. \n\n Los savranos son una raza poco común en Terra que habita principalmente los desiertos y matorrales de Sargon y Rim Billiton. Detestan el frío y prefieren lugares soleados y cálidos con largas horas para disfrutar del sol, por lo que las regiones áridas constituyen su entorno ideal.Debido a que rara vez se los ve fuera de sus asentamientos, la comunicación con ellos es limitada y la mayoría de los terranos tienen un conocimiento mínimo de ellos.",
-            foto: "../razas/savra.png" 
-        },
-        {
-            nombre: "VOUIVRE",
-            desc: "Los Vouivres son casi idénticos a los Dracos, ya que poseen cuernos de formas únicas, grandes colas dracónicas y una considerable destreza física. Esto provoca que se confundan frecuentemente ambas razas dada la escasez de población draco. Su única diferencia con los dracos reside en sus talentos en las Artes Originium; los vouivres carecen del talento innato para perfeccionar las artes superiores, especialmente las pirocinéticas. Los Vouivres son capaces de regular su propio metabolismo para reducir el consumo de alimentos, probablemente como mecanismo de supervivencia ante los duros desiertos de los que son originarios. \n\n Aunque no son una raza terrana común, los vouivres se encuentran principalmente en Sargón y Victoria. Se originaron en los desiertos del norte de Sargón, que fueron subyugados por los aslan durante la conquista aslaniana, en los albores de la civilización humana. Aunque los vouires fueron derrotados inmediatamente, la casa aslan quedó impresionada por su fuerza física. \n\n Desde la muerte de Lugalszargus en el año 15, que fracturó el palacio sargoniano, los vouivres buscaron una independencia de Sargón que perduró hasta la actualidad, aunque esto tuvo graves consecuencias, ya que los ameers enviaron tropas para reprimir la rebelión. En el siglo IX, Lugalszamszi, un padishah de una rama real de los aslan, huyó de Sargón a Victoria para escapar de las persecuciones políticas del sha, llevando consigo a varios guardias reales vouivres. Estos vouivres que siguieron al rey aslan se convirtieron posteriormente en los antepasados ​​de la actual población vouivre en Victoria.",
-            foto: "../razas/vouivre.png" 
-        },
-        {
-            nombre: "K'KUK'ULKAN",
-            desc: "Los K'uk'ulkan poseen rasgos físicos tanto de Liberi como de Phidia: plumas de ave en la cabeza y una cola serpenteante, lo que a menudo los confunde con una u otra raza \n\n Como una de las razas Ancestrales de Terra, originaria de Sargón, se decía que los K'uk'ulkan poseían Artes que podían manipular el clima. En muchas leyendas, se les describe como los 'gobernantes' del cielo, donde se decía que poseían el poder del vuelo. Gracias a su linaje Ancestral, tienen una longevidad que les permite vivir varios siglos \n\n Sin embargo, los K'uk'ulkan practicaron una cultura cruel durante cuatro siglos (aprox. el siglo VI). Al nacer, un joven K'uk'ulkan debía someterse a una 'cirugía' mágica, ajena a las Artes, en la que se les obligaba a implantar sus memorias ancestrales colectivas en el cerebro. Aunque ven con orgullo este ritual como una ceremonia de 'herencia' de sus antepasados, reduce drásticamente su esperanza de vida como grave consecuencia debido al daño permanente a sus cerebros. En la era actual, solo quedan un puñado de K'uk'ulkan, y han perdido gran parte de sus rasgos ancestrales debido a su ritual.",
-            foto: "../razas/kukulkan.png" 
-        },
-        {
-            nombre: "KYLIN",
-            desc: "Los Kylin tienen cuernos dracónicos que se asemejan a astas de cérvido y colas de equino. Debido a su apariencia similar, a menudo se les confunde con elafianos. La única diferencia radica en su cultura: los elafianos llevan un estilo de vida más místico y aislado debido a sus creencias chamánicas, mientras que los kylin tienen un estilo de vida más mundano \n\n Los kylin son una rara raza de Antiguos que solo se encuentra en Yan y sus alrededores. Desde la era tribal anterior a la Rebelión de los Cien Clanes, formaban parte de la Casa de Yan sirviendo como guardias reales o hechiceros, o zhu en yanese, de la Tribu de Yan. Existen muchas leyendas sobre hechiceros kylin que manejan excelentes Artes Originium, como la leyenda de Zhu el kylin, quien invocó un rayo sobre la superficie de un lago para repeler a una peligrosa bestia salvaje, lanzando un rayo que emergió del lago e impidiéndole cruzar; por lo tanto, se les ha asociado a menudo con las Artes del rayo",
-            foto: "../razas/kylin.png" 
-        },
-        {
-            nombre: "VULPO",
-            desc: "Los Vulpos tienen orejas grandes y prominentes, y colas largas y tupidas, a diferencia de los Lupos y los Perros. Son una de las tres razas separadas de los Perros debido a diferencias culturales y biológicas, junto con los Lupos y los Reprobas. Los Vulpos también incluyen varios subgrupos de Antiguos, como los Nueve Colas, aunque muchos de ellos ya se han integrado en la población Vulpo. \n\n Exteriormente, a los Vulpos a veces se les confunde con los Perros debido a su apariencia física casi idéntica; por lo tanto, muchos Vulpos ya se están acostumbrando a los contratiempos. Sin embargo, se les reconoce por su estatura mediana y su gran flexibilidad entre otros Terran. De hecho, en la era antigua, antes de su separación de los Perros, los Vulpos solían ser descritos como los 'más ágiles de los Perros'. Debido a sus rasgos, muchos Vulpos fueron empleados como mensajeros y exploradores tribales, y hasta el día de hoy suelen trabajar como mensajeros o mercenarios. En diversas culturas, los vulpos también son representados como exploradores o guerreros destacados, como el protagonista de la epopeya minoica La primera flecha.",
-            foto: "../razas/vulpo.png" 
-        },
-        {
-            nombre: "ELFOS",
-            desc: "Los elfos tienen orejas largas y puntiagudas, y son más altos que los durins.Poseen una longevidad y nunca envejecen físicamente, manteniendo permanentemente una apariencia juvenil. Desafortunadamente, los elfos son muy sensibles al Originium, y la oripatía reduce drásticamente su esperanza de vida a menos de un mes. Esta inadaptación también les impide usar cualquier tipo de Artes del Originium, pero su magia única puede compensar este defecto. \n\n Debido a la contaminación del Originium causada por la industrialización de la civilización terrana en la era moderna, los elfos son actualmente una raza en peligro de extinción, a la que se les considera simplemente pertenecientes al pasado.La mayoría de los elfos eligen vivir como ermitaños en los bosques o arriesgar sus vidas para vivir en ciudades.Sin embargo, aún existen comunidades élficas que prosperan en algunos refugios vírgenes de la naturaleza, como los bosques del centro de Sami. Muchos de los elfos sami habitan un árbol sagrado gigante lleno de ámbar, que veneran como la fuente de sus vidas. Sin embargo, debido a lo aislados que están del mundo exterior, los elfos de los bosques no pueden hablar el idioma terrano común, pero Muelsyse aún puede entenderlos a través de algún tipo de comunicación telepática.",
-            foto: "../razas/elfos.png" 
-        },
-        {
-            nombre: "CHIMERA",
-            desc: "Se afirma que la Quimera es un 'método primordial para unir dos en uno', por lo que los individuos resultantes exhibían las características de dos razas distintas (y a menudo no relacionadas), aunque físicamente aparentaban ser su raza paterna dominante (y/o probablemente original) \n\n Las Quimeras nacen mediante cruces o por medios artificiales (posiblemente terapia/modificaciones genéticas y/o clonación), estos últimos considerados muy peligrosos. Sin embargo, lo que define a una verdadera 'Quimera' a partir de la simple descendencia de dos individuos de diferentes razas aún es cuestionable, ya que las relaciones interraciales son comunes entre las naciones terrestres. De hecho, aún no está claro si los métodos mencionados podrían crear una 'Quimera'.",
-            foto: "../razas/chimera.png" 
-        },
-        // ... AÑADE MÁS AQUÍ ...
-    ];
-
-    // 3. FUNCIÓN PARA DIBUJAR LAS TARJETAS
-    function cargarRazas() {
-        const grid = document.getElementById('race-grid-container');
-        grid.innerHTML = ''; 
-
-        racesData.forEach((raza, index) => {
-            const code = `R-${String(index + 1).padStart(2, '0')}`;
-            const card = document.createElement('div');
-            card.className = 'race-card';
-            
-            // AÑADIMOS EL EVENTO CLICK AQUÍ
-            card.onclick = () => abrirModalRaza(raza); 
-            
-            card.innerHTML = `
-                <div class="race-code">${code}</div>
-                <div class="race-img-box">
-                    <img src="${raza.foto}" alt="${raza.nombre}">
+                    <p>Mucho antes de que existieran los primeros reinos, Nahara y Alren vagaban solos por un vacío sin propósito. Alren dio forma al vacío y Nahara encendió las estrellas. Sin embargo, ambos comprendieron que la luz y la oscuridad no bastaban, por lo que unieron su poder y crearon un mundo destinado a albergar vida.</p>
                 </div>
-                <div class="race-info">
-                    <div class="race-name">${raza.nombre}</div>
-                    <div class="race-desc" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-                        ${raza.desc}
-                    </div>
+
+                <!-- 2. LOS PRIMEROS PUEBLOS -->
+                <div class="lore-entry" id="primeros-pueblos">
+                    <div class="ornament-divider">༺ ✦ ༻</div>
+                    <h2>LOS PRIMEROS PUEBLOS</h2>
+                    <span class="lore-date">Era de los Orígenes · Anterior al año 0</span>
+
+                    <p>Nahara creó a los Humanos y a los Elfos; de los Humanos surgieron posteriormente los Enanos. Alren cubrió el mundo de flora y fauna y otorgó forma humanoide a algunas criaturas, creando así a las Bestias.</p>
+
+                    <p>Con el tiempo, la creación constante consumió gran parte del poder de Alren. Al intentar originar por sí mismo una nueva raza, dio vida a una criatura deforme y condenada al sufrimiento. Incapaz de destruirla, recurrió a Nahara. Juntos dieron origen a los Orcos, Dracónidos, Sombríos y Vampiros.</p>
                 </div>
-            `;
-            grid.appendChild(card);
-        });
-    }
 
-    // 4. FUNCIÓN PARA ABRIR EL MODAL (NUEVO)
-    function abrirModalRaza(datosRaza) {
-        modalName.innerText = datosRaza.nombre;
-        modalDesc.innerText = datosRaza.desc;
-        modalImg.src = datosRaza.foto;
-        
-        raceModal.classList.add('active'); // Muestra el modal
-    }
+                <!-- 3. LA PRIMERA GRAN GUERRA -->
+                <div class="lore-entry" id="primera-guerra">
+                    <div class="ornament-divider">༺ ✦ ༻</div>
+                    <h2>LA PRIMERA GRAN GUERRA</h2>
+                    <span class="lore-date">Final de la Era de los Orígenes · Anterior al año 0</span>
 
-    // 5. CERRAR EL MODAL
-    closeRaceBtn.addEventListener('click', () => {
-        raceModal.classList.remove('active');
-    });
+                    <p>Durante años, ambos dioses enseñaron a sus pueblos a cultivar, construir y gobernar. Sin embargo, Alren comenzó a resentir haber consumido gran parte de su poder mientras Nahara aún conservaba el suyo.</p>
 
-    // Cerrar si clicamos fuera de la tarjeta
-    raceModal.addEventListener('click', (e) => {
-        if (e.target === raceModal) {
-            raceModal.classList.remove('active');
-        }
-    });
+                    <p>La admiración se convirtió en envidia y la envidia en rencor. Finalmente, Alren ordenó a sus pueblos alzarse contra los de su hermana.</p>
 
-    // 6. NAVEGACIÓN ENTRE PANTALLAS
-    btnOpenRazas.addEventListener('click', () => {
-        cargarRazas();
-        menuScreen.style.display = 'none';
-        razasScreen.style.display = 'flex';
-        setTimeout(() => { razasScreen.style.opacity = '1'; }, 10);
-    });
+                    <p>Así comenzó la Primera Gran Guerra, que terminó con la intervención directa de Nahara y la derrota de las fuerzas de Alren.</p>
 
-    btnBackRazas.addEventListener('click', () => {
-        razasScreen.style.opacity = '0';
-        setTimeout(() => {
-            razasScreen.style.display = 'none';
-            menuScreen.style.display = 'block';
-        }, 300);
-    });
-</script>
+                    <p>De las cenizas de aquella guerra surgió un Imperio.</p>
+                </div>
+
+                <!-- 4. EL IMPERIO -->
+                <div class="lore-entry" id="imperio">
+                    <div class="ornament-divider">༺ ✦ ༻</div>
+                    <h2>EL IMPERIO</h2>
+                    <span class="lore-date">Era Imperial · Años 0–500</span>
+
+                    <p>Tras la guerra se formó un gran Imperio compuesto principalmente por Humanos, Elfos, Enanos y Bestias. Sus ejércitos comenzaron a perseguir a Orcos, Dracónidos, Sombríos y Vampiros, considerados enemigos de los pueblos vencedores.</p>
+
+                    <p>Aquella persecución se extendió durante generaciones y terminó convirtiéndose en una campaña de exterminio contra los pueblos creados por Alren. Los Sombríos sufrieron especialmente sus consecuencias, hasta que el Imperio logró exterminarlos por completo. Su pueblo desapareció del mundo conocido, convertido en una de las mayores tragedias de la historia imperial.</p>
+
+                    <p>Durante cinco siglos, el Imperio dominó enormes territorios y alcanzó un gran desarrollo en tecnología, conocimiento y artes arcanas. Sus ciudades prosperaron, las rutas comerciales se extendieron y sus instituciones reunieron conocimientos transmitidos de generación en generación. En aquella época, la magia constituía una disciplina estudiada y transmitida por maestros, academias y escritos que recogían siglos de investigación.</p>
+
+                    <p>Sin embargo, por causas que nunca llegaron a esclarecerse, el Imperio cayó en el año 500. Con su caída se perdió también gran parte del saber que había sustentado su grandeza.</p>
+                </div>
+
+                <!-- 5. LA RUPTURA ARCANA -->
+                <div class="lore-entry" id="ruptura-arcana">
+                    <div class="ornament-divider">༺ ✦ ༻</div>
+                    <h2>LA RUPTURA ARCANA</h2>
+                    <span class="lore-date">Desde el año 500</span>
+
+                    <p>La caída del Imperio supuso el comienzo de una pérdida que marcaría los siglos venideros. Las academias fueron destruidas, las bibliotecas ardieron y numerosos practicantes perecieron durante el colapso y los conflictos posteriores. Los manuscritos que sobrevivieron quedaron dispersos, incompletos o privados de las explicaciones necesarias para comprenderlos.</p>
+
+                    <p>Con el paso del tiempo, el conocimiento arcano dejó de transmitirse. Los métodos que antaño permitían estudiar y practicar la magia se perdieron, y aquello que había sido objeto de enseñanza se convirtió en un saber fragmentario, oculto entre ruinas y vestigios de una civilización desaparecida.</p>
+
+                    <p>Este proceso recibió el nombre de <strong>Ruptura Arcana</strong>.</p>
+
+                    <p>La magia no desapareció del mundo, pero el conocimiento necesario para comprenderla y ejercerla se perdió. Desde entonces, las antiguas artes arcanas dejaron de formar parte del saber ordinario de los pueblos.</p>
+                </div>
+
+                <!-- 6. CUARENTA AÑOS DE SANGRE -->
+                <div class="lore-entry" id="guerras-sangre">
+                    <div class="ornament-divider">༺ ✦ ༻</div>
+                    <h2>CUARENTA AÑOS DE SANGRE</h2>
+                    <span class="lore-date">Años 500–540</span>
+
+                    <p>Tras el colapso imperial, los supervivientes fundaron nuevas ciudades, clanes y reinos. Sin embargo, los antiguos rencores no tardaron en resurgir, dando comienzo a casi cuarenta años de guerras continuas.</p>
+
+                    <p>Poblaciones enteras fueron destruidas, las rutas comerciales desaparecieron y gran parte del conocimiento y la tecnología imperial terminó perdiéndose. Las tierras que antaño habían prosperado quedaron reducidas a ruinas, mientras sus habitantes luchaban por sobrevivir en un mundo cada vez más fragmentado.</p>
+
+                    <p>Agotados por décadas de conflicto, los pueblos comenzaron a suplicar a Nahara y Alren por la paz. Sin embargo, ninguno de los dos dioses respondió a sus plegarias.</p>
+
+                    <p>Finalmente, en el año 540, la guerra llegó a su fin por acción de los propios mortales. No fueron los dioses quienes pusieron término a aquella tragedia, sino aquellos que, tras décadas de destrucción, ya no podían soportar su continuación.</p>
+                </div>
+
+                <!-- 7. EL REINO DE ALDARIA -->
+                <div class="lore-entry" id="reino-aldaria">
+                    <div class="ornament-divider">༺ ✦ ༻</div>
+                    <h2>EL REINO DE ALDARIA</h2>
+                    <span class="lore-date">Años 540–900</span>
+
+                    <p>Entre las naciones supervivientes destacó Aldaria, cuyos ejércitos comenzaron a ocupar los territorios devastados por el conflicto. Con el paso de los siglos, sus dominios se extendieron hasta convertirla en el reino más extenso conocido.</p>
+
+                    <p>La reconstrucción fue lenta y desigual. Numerosas ciudades jamás recuperaron su antiguo esplendor, los caminos quedaron sepoblados por el abandono y gran parte del conocimiento imperial sobrevivió únicamente en ruinas, reliquias y escritos incompletos.</p>
+
+                    <p>Durante los siglos posteriores, Aldaria consolidó su poder y extendió sus fronteras sobre tierras que habían quedado despobladas. Surgieron nuevos asentamientos, se establecieron dominios y las generaciones posteriores levantaron sus vidas sobre los restos de un mundo devastado por la guerra.</p>
+
+                    <p>No obstante, la extensión del reino nunca llegó a significar que todas sus tierras estuvieran habitadas o plenamente recuperadas. Muchas regiones permanecieron abandonadas, y los vestigios de las antiguas civilizaciones continuaron ocultos bajo el paso del tiempo.</p>
+                </div>
+
+                <!-- 8. LA ERA ACTUAL -->
+                <div class="lore-entry" id="era-actual">
+                    <div class="ornament-divider">༺ ✦ ༻</div>
+                    <h2>LA ERA ACTUAL</h2>
+                    <span class="lore-date">Año 900</span>
+
+                    <p>Han transcurrido trescientos sesenta años desde el final de las Guerras de Sangre. Aldaria se alza hoy como el reino más extenso conocido, aunque vastas regiones permanecen despobladas y numerosas ciudades conservan las huellas de un pasado que pocos pueden reconstruir.</p>
+
+                    <p>La caída del Imperio y la Ruptura Arcana dejaron tras de sí pérdidas que ni los siglos han conseguido reparar. Los conocimientos de antaño sobreviven de manera fragmentaria, las antiguas ruinas permanecen como testigos de civilizaciones desaparecidas y muchos secretos de la historia continúan sin respuesta.</p>
+
+                    <p>Así llega Aldaria al año 900:</p>
+
+                    <blockquote class="royal-quote">
+                        «Un reino construido sobre las cenizas de antiguas guerras, rodeado de tierras por recuperar y de un pasado cuyo legado todavía perdura. Comenzando así, una nueva era.»
+                    </blockquote>
+                </div>
+
+            </div>
+
+            <!-- Pie de página del pergamino -->
+            <footer class="end-log">
+                — FIN DEL FOLIO REAL —
+            </footer>
+
+        </article>
+    </section>
 </body>
 </html>
